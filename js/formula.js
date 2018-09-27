@@ -212,6 +212,9 @@ function calculate_D(qmconfig) {
     var resultDatail = ''; //總分建議
     var scoreArray = uiValue; //各項分數
 
+
+    //D-1
+    resultDatail += qmconfig.D.D_1[0].title;
     //D-2
     //根據分數，取得對應range文字wording
     //耦合高，暫時維持現狀。
