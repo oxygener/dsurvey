@@ -217,8 +217,9 @@ function calculate_D(qmconfig) {
     //耦合高，暫時維持現狀。
     var compareArray = qmconfig.D.D_compare;
     var target = resultTitle;
+    console.log('resultTitle='+resultTitle);
     $.each(compareArray, function(mIndex, compare) {
-        if (target < compare) {
+        if (target <= compare) {
             resultDatail += qmconfig.D.D_2[mIndex].title;
             return false;
         }
