@@ -72,7 +72,7 @@ function calculate_A(config, qmconfig) {
     uiTotalValue = (tempValueMax + tempValueAverage) / 2;
     uiTotalValue = Math.round(uiTotalValue * 10) / 10;
 
-    console.log('resultArray=' + JSON.stringify(resultArray));
+    // console.log('resultArray=' + JSON.stringify(resultArray));
 
     return resultArray;
 }
@@ -242,17 +242,24 @@ function calculate_D(qmconfig) {
     }
 
     //D-4
+    console.log('test='+JSON.stringify(scoreArray[0]));
     if (scoreArray[2] > scoreArray[3] && scoreArray[2] > scoreArray[4] && scoreArray[2] > 3) {
+        console.log('D-1');
         resultDatail += qmconfig.D.D_4[0].title;
-    } else if (scoreArray[3] > scoreArray[2] && scoreArray[3] > scoreArray[4] && scoreArray[3] > 3) {
+    } else if (scoreArray[3] >= scoreArray[2] && scoreArray[3] >= scoreArray[4] && scoreArray[3] > 3) {
+        console.log('D-2');
         resultDatail += qmconfig.D.D_4[1].title;
-    } else if (scoreArray[4] > scoreArray[2] && scoreArray[4] > scoreArray[3] && scoreArray[4] > 3) {
+    } else if (scoreArray[4] >= scoreArray[2] && scoreArray[4] > scoreArray[3] && scoreArray[4] > 3) {
+        console.log('D-3');
         resultDatail += qmconfig.D.D_4[2].title;
     } else if (scoreArray[0] <= 2 && scoreArray[1] <= 2 && scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
+        console.log('D-4');
         resultDatail += qmconfig.D.D_4[3].title;
     } else if (scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
+        console.log('D-5');
         resultDatail += qmconfig.D.D_4[4].title;
     } else {
+        console.log('D-else');
         if (resultDatail.charAt(resultDatail.length - 1) == '，') {
             resultDatail = resultDatail.substring(0, resultDatail.length - 1);
         }
