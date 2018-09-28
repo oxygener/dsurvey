@@ -48,17 +48,17 @@ function calculate_A(config, qmconfig) {
     $.each(targetArray, function(sIndex, value) {
         var target = targetArray[sIndex];
         $.each(compareArray, function(mIndex, compare) {
-            if (target < compare) {
+            if (target <= compare) {
 
                 var titl;
                 try {
                     title = qmconfig.A.session[sIndex].question[mIndex].title;
                 } catch (e) {
-
+                    console.log(e);
                 }
                 wording = (typeof title != 'undefined') ? title : 'SETTING ERROR';
                 // var wording = qmconfig.A.session[sIndex].question[mIndex].title;
-
+                // console.log('targetArray[sIndex]' + targetArray[sIndex] + ' wording=' + wording);
                 resultArray.push(new DataTypeB(targetArray[sIndex], wording));
                 return false;
             }
@@ -72,7 +72,7 @@ function calculate_A(config, qmconfig) {
     uiTotalValue = (tempValueMax + tempValueAverage) / 2;
     uiTotalValue = Math.round(uiTotalValue * 10) / 10;
 
-    // console.log('resultArray=' + JSON.stringify(resultArray));
+    console.log('resultArray=' + JSON.stringify(resultArray));
 
     return resultArray;
 }
@@ -220,7 +220,7 @@ function calculate_D(qmconfig) {
     //耦合高，暫時維持現狀。
     var compareArray = qmconfig.D.D_compare;
     var target = resultTitle;
-    console.log('resultTitle='+resultTitle);
+    console.log('resultTitle=' + resultTitle);
     $.each(compareArray, function(mIndex, compare) {
         if (target <= compare) {
             resultDatail += qmconfig.D.D_2[mIndex].title;
@@ -237,7 +237,7 @@ function calculate_D(qmconfig) {
         resultDatail += qmconfig.D.D_3[3].title;
     } else if (scoreArray[0] <= 2 && scoreArray[1] <= 2) {
         resultDatail += qmconfig.D.D_3[2].title;
-    } else{
+    } else {
         resultDatail += "";
     }
 
@@ -250,11 +250,11 @@ function calculate_D(qmconfig) {
         resultDatail += qmconfig.D.D_4[2].title;
     } else if (scoreArray[0] <= 2 && scoreArray[1] <= 2 && scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
         resultDatail += qmconfig.D.D_4[3].title;
-    } else if (scoreArray[2] <=3 && scoreArray[3] <=3 && scoreArray[4] <=3) {
+    } else if (scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
         resultDatail += qmconfig.D.D_4[4].title;
-    } else{
-        if (resultDatail.charAt(resultDatail.length - 1)=='，') {
-            resultDatail = resultDatail.substring(0,resultDatail.length - 1);
+    } else {
+        if (resultDatail.charAt(resultDatail.length - 1) == '，') {
+            resultDatail = resultDatail.substring(0, resultDatail.length - 1);
         }
     }
 
