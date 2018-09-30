@@ -142,14 +142,14 @@
                 var data_B_1 = B_typeA[0];
                 if ((index >= data_B_1.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + data_B_1[index].title);
+                $(this).html(prefix + data_B_1[index].title);
             });
 
             $.each($('.ui_B_2'), function(index, data) {
                 var data_B_2 = B_typeA[1];
                 if ((index >= data_B_2.length)) return;
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + data_B_2[index].title);
+                $(this).html(prefix + data_B_2[index].title);
 
             });
         }
@@ -159,24 +159,21 @@
                 var data_B_3 = B_typeB[0];
                 if ((index >= data_B_3.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + data_B_3[index].title);
+                $(this).html(prefix + data_B_3[index].title);
             });
 
             $.each($('.ui_B_4'), function(index, data) {
                 var ui_B_4 = B_typeB[1];
                 if ((index >= ui_B_4.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + ui_B_4[index].title);
+                $(this).html(prefix + ui_B_4[index].title);
             });
-
-            //todo UI沒有顯示出B-5-1：
             $.each($('.ui_B_5'), function(index, data) {
                 var ui_B_5 = B_typeB[2];
                 if ((index >= ui_B_5.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + ui_B_5[index].title);
+                $(this).html(prefix + ui_B_5[index].title);
             });
-
         }
 
 
@@ -185,14 +182,14 @@
                 var data_C = C[0];
                 if ((index >= data_C.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + data_C[index].title);
+                $(this).html(prefix + data_C[index].title);
             });
 
             $.each($('.ui_C_2'), function(index, data) {
                 var data_C = C[1];
                 if ((index >= data_C.length)) return; //超過長度
                 var prefix = (index + 1) + '. ';
-                $(this).append(prefix + data_C[index].title);
+                $(this).html(prefix + data_C[index].title);
             });
 
         }
@@ -284,7 +281,7 @@
                 <div class="card card-grid-top" id="card-C-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-2">創造有利條件的方法</h4>
-                        <p class="card-text ui_C_2"></p>
+                        <p class="card-text ui_C_2">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <p class="card-text ui_C_2"></p>
                         <p class="card-text ui_C_2"></p>
                     </div>
@@ -292,7 +289,7 @@
                 <div class="card card-grid-top" id="card-C-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-1">聚焦內在的方法</h4>
-                        <p class="card-text ui_C_1"></p>
+                        <p class="card-text ui_C_1">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
                         <p class="card-text ui_C_1"></p>
                         <p class="card-text ui_C_1"></p>
                     </div>
@@ -339,7 +336,7 @@
                 <div class="card" id="card-B-3">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-3">免疫代謝的方案</h4>
-                        <p class="card-text ui_B_3"></p>
+                        <p class="card-text ui_B_3">您的代謝情形良好，無活躍的損傷發炎反應。</p>
                         <p class="card-text ui_B_3"></p>
                         <p class="card-text ui_B_3"></p>
                     </div>
@@ -347,7 +344,7 @@
                 <div class="card" id="card-B-4">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-4">微循環改善的方案</h4>
-                        <p class="card-text ui_B_4"></p>
+                        <p class="card-text ui_B_4">您的循環狀況良好，無明顯瘀滯現象。</p>
                         <p class="card-text ui_B_4"></p>
                         <p class="card-text ui_B_4"></p>
                     </div>
@@ -355,7 +352,7 @@
                 <div class="card" id="card-B-5">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-5">機能復甦的方案</h4>
-                        <p class="card-text ui_B_5"></p>
+                        <p class="card-text ui_B_5">您的身體機能運作正常，無顯著失調現象。</p>
                         <p class="card-text ui_B_5"></p>
                         <p class="card-text ui_B_5"></p>
                     </div>
@@ -363,7 +360,7 @@
                 <div class="card card-grid-middle-large" id="card-B-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-B-1">供養治療的方案</h4>
-                        <p class="card-text ui_B_1"></p>
+                        <p class="card-text ui_B_1">您的供氧能力尚佳，請繼續保持。</p>
                         <p class="card-text ui_B_1"></p>
                         <p class="card-text ui_B_1"></p>
                     </div>
@@ -371,7 +368,7 @@
                 <div class="card card-grid-middle-large" id="card-B-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-B-2">耗氧治療的方案</h4>
-                        <p class="card-text ui_B_2"></p>
+                        <p class="card-text ui_B_2">您沒有嚴重的能量透支情形，請持續留意。</p>
                         <p class="card-text ui_B_2"></p>
                         <p class="card-text ui_B_2"></p>
                     </div>
