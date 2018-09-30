@@ -140,39 +140,47 @@
         function updateUI(B_typeA) {
             $.each($('.ui_B_1'), function(index, data) {
                 var data_B_1 = B_typeA[0];
-                if ((index >= data_B_1.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + data_B_1[index].title);
+                if ((index >= data_B_1.length)) { $(this).hide(); return; } //超過長度
+                $('#card-B-1-default').hide();
+                $(this).html(data_B_1[index].title);
             });
 
             $.each($('.ui_B_2'), function(index, data) {
                 var data_B_2 = B_typeA[1];
-                if ((index >= data_B_2.length)) return;
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + data_B_2[index].title);
+                if ((index >= data_B_2.length)) { $(this).hide(); return; }
+                $('#card-B-2-default').hide();
+                $(this).html(data_B_2[index].title);
 
             });
         }
 
         function updateUI_B_typeB(B_typeB) {
+
             $.each($('.ui_B_3'), function(index, data) {
                 var data_B_3 = B_typeB[0];
-                if ((index >= data_B_3.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + data_B_3[index].title);
+                if ((index >= data_B_3.length)) {
+                    console.log('ui_B_3 index=' + index);
+                    $(this).hide();
+                    return; //超過長度
+                }
+                $('#card-B-3-default').hide();
+                $(this).html(data_B_3[index].title);
             });
 
             $.each($('.ui_B_4'), function(index, data) {
                 var ui_B_4 = B_typeB[1];
-                if ((index >= ui_B_4.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + ui_B_4[index].title);
+                if ((index >= ui_B_4.length)) {
+                    $(this).hide();
+                    return; //超過長度
+                }
+                $('#card-B-4-default').hide();
+                $(this).html(ui_B_4[index].title);
             });
             $.each($('.ui_B_5'), function(index, data) {
                 var ui_B_5 = B_typeB[2];
-                if ((index >= ui_B_5.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + ui_B_5[index].title);
+                if ((index >= ui_B_5.length)) { $(this).hide(); return; } //超過長度
+                $('#card-B-5-default').hide();
+                $(this).html(ui_B_5[index].title);
             });
         }
 
@@ -180,16 +188,16 @@
         function updateUI_C(C) {
             $.each($('.ui_C_1'), function(index, data) {
                 var data_C = C[0];
-                if ((index >= data_C.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + data_C[index].title);
+                if ((index >= data_C.length)) { $(this).hide(); return; } //超過長度
+                $('#card-C-1-default').hide();
+                $(this).html(data_C[index].title);
             });
 
             $.each($('.ui_C_2'), function(index, data) {
                 var data_C = C[1];
-                if ((index >= data_C.length)) return; //超過長度
-                var prefix = (index + 1) + '. ';
-                $(this).html(prefix + data_C[index].title);
+                if ((index >= data_C.length)) { $(this).hide(); return; } //超過長度
+                $('#card-C-2-default').hide();
+                $(this).html(data_C[index].title);
             });
 
         }
@@ -281,17 +289,32 @@
                 <div class="card card-grid-top" id="card-C-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-2">創造有利條件的方法</h4>
-                        <p class="card-text ui_C_2">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
+                        <!-- <p class="card-text ui_C_2">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <p class="card-text ui_C_2"></p>
-                        <p class="card-text ui_C_2"></p>
+                        <p class="card-text ui_C_2"></p> -->
+
+                        <p id="card-C-2-default">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
+                        <ol>
+                            <li class="card-text ui_C_2"></li>
+                            <li class="card-text ui_C_2"></li>
+                            <li class="card-text ui_C_2"></li>
+                        </ol>
+
                     </div>
                 </div>
                 <div class="card card-grid-top" id="card-C-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-1">聚焦內在的方法</h4>
-                        <p class="card-text ui_C_1">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
+                        <!-- <p class="card-text ui_C_1">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
                         <p class="card-text ui_C_1"></p>
-                        <p class="card-text ui_C_1"></p>
+                        <p class="card-text ui_C_1"></p> -->
+
+                        <p id="card-C-1-default">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
+                        <ol>
+                            <li class="card-text ui_C_1"></li>
+                            <li class="card-text ui_C_1"></li>
+                            <li class="card-text ui_C_1"></li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -301,82 +324,96 @@
                 <div class="card card-grid-middle-large" id="card-A-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-A-1">供給性缺氧檢驗數據</h4>
-                        <p class="card-text" id="ui_A_1_1">供氧不足分析 : </p>
+                        <p class="card-text" id="ui_A_1_1">指數◆ </p>
                         <p class="card-text" id="ui_A_1_2"></p>
                     </div>
                 </div>
                 <div class="card  card-grid-middle-large" id="card-A-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-A-2">耗損性缺氧檢驗數據</h4>
-                        <p class="card-text" id="ui_A_2_1">能量透支分析 : </p>
+                        <p class="card-text" id="ui_A_2_1">指數◆ </p>
                         <p class="card-text" id="ui_A_2_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-3">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-A-3">熱性體質檢驗數據</h4>
-                        <p class="card-text" id="ui_A_3_1">損傷發炎程度 : </p>
+                        <p class="card-text" id="ui_A_3_1">指數◆ </p>
                         <p class="card-text" id="ui_A_3_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-4">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-A-4">濕性體質檢驗數據</h4>
-                        <p class="card-text" id="ui_A_4_1">循環淤滯程度 : </p>
+                        <p class="card-text" id="ui_A_4_1">指數◆ </p>
                         <p class="card-text" id="ui_A_4_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-5">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-A-5">寒性體質檢驗數據</h4>
-                        <p class="card-text" id="ui_A_5_1">失調衰退程度 : </p>
+                        <p class="card-text" id="ui_A_5_1">指數◆ </p>
                         <p class="card-text" id="ui_A_5_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-B-3">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-3">免疫代謝的方案</h4>
-                        <p class="card-text ui_B_3">您的代謝情形良好，無活躍的損傷發炎反應。</p>
-                        <p class="card-text ui_B_3"></p>
-                        <p class="card-text ui_B_3"></p>
+                        <p id="card-B-3-default">您的代謝情形良好，無活躍的損傷發炎反應。</p>
+                        <ol>
+                            <li class="card-text ui_B_3"></li>
+                            <li class="card-text ui_B_3"></li>
+                            <li class="card-text ui_B_3"></li>
+                        </ol>
                     </div>
                 </div>
                 <div class="card" id="card-B-4">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-4">微循環改善的方案</h4>
-                        <p class="card-text ui_B_4">您的循環狀況良好，無明顯瘀滯現象。</p>
-                        <p class="card-text ui_B_4"></p>
-                        <p class="card-text ui_B_4"></p>
+                        <p id="card-B-4-default">您的循環狀況良好，無明顯瘀滯現象。</p>
+                        <ol>
+                            <li class="card-text ui_B_4"></li>
+                            <li class="card-text ui_B_4"></li>
+                            <li class="card-text ui_B_4"></li>
+                        </ol>
                     </div>
                 </div>
                 <div class="card" id="card-B-5">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-5">機能復甦的方案</h4>
-                        <p class="card-text ui_B_5">您的身體機能運作正常，無顯著失調現象。</p>
-                        <p class="card-text ui_B_5"></p>
-                        <p class="card-text ui_B_5"></p>
+                        <p id="card-B-5-default">您的身體機能運作正常，無顯著失調現象。</p>
+                        <ol>
+                            <li class="card-text ui_B_5"></li>
+                            <li class="card-text ui_B_5"></li>
+                            <li class="card-text ui_B_5"></li>
+                        </ol>
                     </div>
                 </div>
                 <div class="card card-grid-middle-large" id="card-B-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-B-1">供養治療的方案</h4>
-                        <p class="card-text ui_B_1">您的供氧能力尚佳，請繼續保持。</p>
-                        <p class="card-text ui_B_1"></p>
-                        <p class="card-text ui_B_1"></p>
+                        <p id="card-B-1-default">您的供氧能力尚佳，請繼續保持。</p>
+                        <ol>
+                            <li class="card-text ui_B_1"></li>
+                            <li class="card-text ui_B_1"></li>
+                            <li class="card-text ui_B_1"></li>
+                        </ol>
                     </div>
                 </div>
                 <div class="card card-grid-middle-large" id="card-B-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-B-2">耗氧治療的方案</h4>
-                        <p class="card-text ui_B_2">您沒有嚴重的能量透支情形，請持續留意。</p>
-                        <p class="card-text ui_B_2"></p>
-                        <p class="card-text ui_B_2"></p>
+                        <p id="card-B-2-default">您沒有嚴重的能量透支情形，請持續留意。</p>
+                        <ol>
+                            <li class="card-text ui_B_2"></li>
+                            <li class="card-text ui_B_2"></li>
+                            <li class="card-text ui_B_2"></li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
-    
-    <br>
+        <br>
     </div>
     <div style="text-align: center; display: block;">
         <div><a id="downloadReport" href="#">下載至裝置中</a></div>

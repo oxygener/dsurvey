@@ -107,22 +107,19 @@
     padding-right: 1em;
 }
 
-.card-title,
+li {
+    margin-left: -30px;
+}
+
+/* 取消限制2行，從縮減文字出發 */
+/*.card-title,
 .card-text,
 #card-B-3>.card-body>.card-text,
 #card-B-4>.card-body>.card-text,
 #card-B-5>.card-body>.card-text {
-    /* hide text if it more than N lines  */
     overflow: hidden;
-    /* for set '...' in absolute position */
     position: relative;
-    /* use this value to count block height */
-    /*line-height: 1.2em;*/
-    /* max-height = line-height (1.2) * lines max number (3) */
-    /*max-height: 2.4em;*/
-    /* fix problem when last visible word doesn't adjoin right side  */
     text-align: justify;
-    /* place for '...' */
     margin-right: -1em;
     padding-right: 1em;
 }
@@ -137,32 +134,21 @@
     max-height: 2.4em;
 }
 
-/* create the ... */
 .card-text:before {
-    /* points in the end */
     content: '...';
-    /* absolute position */
     position: absolute;
-    /* set position to right bottom corner of block */
     right: 0;
     bottom: 0;
 }
 
-
-/* hide ... if we have text, which is less than or equal to max lines */
-
 .card-text:after {
-    /* points in the end */
     content: '';
-    /* absolute position */
     position: absolute;
-    /* set position to right bottom corner of text */
     right: 0;
-    /* set width and height */
     width: 1em;
     height: 1em;
     margin-top: 0.2em;
-}
+}*/
 
 .card-grid-top {}
 
@@ -223,14 +209,14 @@
 
     /*C-1,C-2 內縮margin*/
 .card-grid-top .card-body {
-    margin: 0px 20px 0px 20px;
+    /*margin: 0px 10px 0px 10px;*/
 }
 }
 
 @media (min-width: 1200px) {
     /*C-1,C-2 內縮margin*/
-    .card-grid-top .card-body {
-    margin: 0px 40px 0px 40px;
+    /*.card-grid-top .card-body {
+    margin: 0px 40px 0px 40px;*/
 }
 	.card-title {
 		font-size: 1.6em;
