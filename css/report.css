@@ -1,5 +1,3 @@
-
-
 /*字型*/
 .font-blod,
 .card-title {
@@ -11,34 +9,6 @@
     font-family: 微軟正黑體, Heiti TC;
 }
 
-/*檢驗報告上方title*/
-#ui_title_top {
-    color: #34d6b7;
-    font-size: 1.0em;
-}
-
-#ui_title_middle {
-    color: #404040;
-    font-size: 1.6em;
-    margin: 5px 0px -10px 0px;
-}
-
-#ui_title_bottom {
-    color: #404040;
-    font-size: 3.8em;
-}
-
-#ui_D_1 {
-    color: #36837b;
-    font-size: 1.4em;
-    margin: -20px 0px 0px 0px;
-}
-
-#ui_D_2 {
-    color: #36837b;
-    font-size: 1.4em;
-    margin: 10px 0px 40px 0px;
-}
 
 /*檢驗報告上方title*/
 
@@ -227,11 +197,32 @@ li {
     column-count: 1;
 }
 
+#ui_D_1,
+#ui_D_2 {
+    color: #36837b;
+}
+
+.general-text {
+    font-size: 1.0em;
+}
+
+
 @media (min-width: 576px) {}
 
 @media (min-width: 768px) {}
 
 @media (min-width: 992px) {
+
+    .general-text {
+        font-size: 1.4em;
+    }
+
+    #ui_D_1,
+    #ui_D_2 {
+        color: #36837b;
+
+    }
+
 
     .card-title {
         font-size: 1.3em;
@@ -276,7 +267,7 @@ li {
 .card-title {
     font-size: 1.6em;
 }
-}
+
 
 
 /* Footer */
