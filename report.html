@@ -21,33 +21,9 @@
         var config; //json格式的config設定檔
         var qmconfig; //json格式的question mapping設定檔
 
+        initGetParam();
         initConfig();
         initDownloadButton();
-
-        //-----解析gSheetRequestParam-----
-        //1. 提供method取得gSheetRequestParam參數
-        //2. 組合出google sheet url
-        $.extend({
-            getUrlVars: function() {
-                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                var vars = [],
-                    hash; //目前不清楚vars型別是什麼?怎麼使用?
-                for (var i = 0; i < hashes.length; i++) {
-                    hash = hashes[i].split('=');
-                    vars.push(hash[0]);
-                    vars[hash[0]] = hash[1];
-                    //動態宣告gSheetParam物件的Object
-                    gSheetParam['entry.' + hash[0]] = decodeURIComponent(hash[1]);
-                }
-                return vars;
-            },
-            getUrlVar: function(name) {
-                //回傳http get參數
-                var result = $.getUrlVars()[name];
-                return typeof result != 'undefined' ? result : '1';
-            }
-        });
-
 
         function initConfig() {
             console.log('initConfig()');
@@ -94,9 +70,9 @@
                     // item_question.value = $.getUrlVar(item_question.qid); // json object set value
 
                     //todo 問題還沒建立完成，所以部分item_question.qid會拿到空的qid
-                    var qid = $.getUrlVar(item_question.qid);
+                    var qid = getUrlVar(item_question.qid);
                     if (typeof qid != 'undefined') {
-                        item_question.value = $.getUrlVar(item_question.qid); // json object set value    
+                        item_question.value = getUrlVar(item_question.qid); // json object set value    
                     } else {
                         item_question.value = '4'; //set default
                     }
@@ -206,11 +182,30 @@
             $('#ui_D_1').append(D.title);
             $('#ui_D_2').append(D.detail);
         }
-
-        //todo: 截圖功能先不用在這裡寫 (demo已經有寫了)
-
-
     });
+
+    //-----解析gSheetRequestParam-----
+    //1. 提供method取得gSheetRequestParam參數
+    //2. 組合出google sheet url
+    function getUrlVar(name) {
+        var result = gSheetParam[('entry.' + name)];
+        return typeof result != 'undefined' ? result : '1';
+    }
+
+    function initGetParam() {
+        console.log('initGetParam()');
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        // vars = [];
+        var hash; //目前不清楚vars型別是什麼?怎麼使用?
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            // console.log('hash[0]='+hash[0]+' hash[1]='+hash[1]);
+            // vars.push(hash[0]);
+            // vars[hash[0]] = hash[1];
+            //動態宣告gSheetParam物件的Object
+            gSheetParam['entry.' + hash[0]] = decodeURIComponent(hash[1]);
+        }
+    }
 
     //send gooogle sheet request
     function gSheetRequestParam() {
@@ -292,14 +287,12 @@
                         <!-- <p class="card-text ui_C_2">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <p class="card-text ui_C_2"></p>
                         <p class="card-text ui_C_2"></p> -->
-
                         <p id="card-C-2-default">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <ol>
                             <li class="card-text ui_C_2"></li>
                             <li class="card-text ui_C_2"></li>
                             <li class="card-text ui_C_2"></li>
                         </ol>
-
                     </div>
                 </div>
                 <div class="card card-grid-top" id="card-C-1">
@@ -308,7 +301,6 @@
                         <!-- <p class="card-text ui_C_1">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
                         <p class="card-text ui_C_1"></p>
                         <p class="card-text ui_C_1"></p> -->
-
                         <p id="card-C-1-default">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
                         <ol>
                             <li class="card-text ui_C_1"></li>

@@ -13,7 +13,13 @@ function calculate_A(config, qmconfig) {
     var totalScoreArray = []; //所有session分數陣列 -> 為了取最大值 (將5大類分數陳列)
     var totalSumScore = 0; //所有session分數加總 -> 為了取平均值 (將5大類分數累加)
 
-    $.each(config.session, function(i, item_session) {
+    $.each(config.session, function(sIndex, item_session) {
+
+        if (sIndex >4) {
+            // console.log('已經超過5個session，第6個自控力');
+            return false;
+        }
+
         // console.log('item_session='+JSON.stringify(item_session));
         var scoreArray = []; //單一session所有問題，轉換成分數陣列    -> 為了取最大值
         var sumScore = 0; //單一session所有問題的分數加總      -> 為了取平均值
@@ -38,10 +44,9 @@ function calculate_A(config, qmconfig) {
         totalSumScore += temp;
         totalScoreArray.push(temp);
         uiValue.push(Math.round(temp * 10) / 10);
-
     });
 
-    //根據分數，取得對應range文字wording
+    //根據各項分數(供、耗、熱、濕、寒)，取得對應文字wording
     //耦合高，暫時維持現狀。
     var targetArray = uiValue;
     var compareArray = qmconfig.A.A_compare;
@@ -50,12 +55,10 @@ function calculate_A(config, qmconfig) {
         $.each(compareArray, function(mIndex, compare) {
             if (target <= compare) {
 
-                var titl;
+                var title;
                 try {
                     title = qmconfig.A.session[sIndex].question[mIndex].title;
-                } catch (e) {
-                    console.log(e);
-                }
+                } catch (e) {console.log(e);}
                 wording = (typeof title != 'undefined') ? title : 'SETTING ERROR';
                 // var wording = qmconfig.A.session[sIndex].question[mIndex].title;
                 // console.log('targetArray[sIndex]' + targetArray[sIndex] + ' wording=' + wording);
@@ -220,7 +223,7 @@ function calculate_D(qmconfig) {
     //耦合高，暫時維持現狀。
     var compareArray = qmconfig.D.D_compare;
     var target = resultTitle;
-    console.log('resultTitle=' + resultTitle);
+    // console.log('resultTitle=' + resultTitle);
     $.each(compareArray, function(mIndex, compare) {
         if (target <= compare) {
             resultDatail += qmconfig.D.D_2[mIndex].title;
@@ -242,24 +245,23 @@ function calculate_D(qmconfig) {
     }
 
     //D-4
-    console.log('test='+JSON.stringify(scoreArray[0]));
     if (scoreArray[2] > scoreArray[3] && scoreArray[2] > scoreArray[4] && scoreArray[2] > 3) {
-        console.log('D-1');
+        // console.log('D-1');
         resultDatail += qmconfig.D.D_4[0].title;
     } else if (scoreArray[3] >= scoreArray[2] && scoreArray[3] >= scoreArray[4] && scoreArray[3] > 3) {
-        console.log('D-2');
+        // console.log('D-2');
         resultDatail += qmconfig.D.D_4[1].title;
     } else if (scoreArray[4] >= scoreArray[2] && scoreArray[4] > scoreArray[3] && scoreArray[4] > 3) {
-        console.log('D-3');
+        // console.log('D-3');
         resultDatail += qmconfig.D.D_4[2].title;
     } else if (scoreArray[0] <= 2 && scoreArray[1] <= 2 && scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
-        console.log('D-4');
+        // console.log('D-4');
         resultDatail += qmconfig.D.D_4[3].title;
     } else if (scoreArray[2] <= 3 && scoreArray[3] <= 3 && scoreArray[4] <= 3) {
-        console.log('D-5');
+        // console.log('D-5');
         resultDatail += qmconfig.D.D_4[4].title;
     } else {
-        console.log('D-else');
+        // console.log('D-else');
         if (resultDatail.charAt(resultDatail.length - 1) == '，') {
             resultDatail = resultDatail.substring(0, resultDatail.length - 1);
         }
@@ -311,7 +313,7 @@ function getExerciseArray(session, isNeedExercise) {
                 //【排序規則一】問題1~4換算出的分數相加
                 var totalScore = 0;
                 $.each(qidGroup, function(qidIndex, item_qidGroup) {
-                    totalScore += valueToScore(parseInt($.getUrlVar(item_qidGroup.qid)));
+                    totalScore += valueToScore(parseInt(getUrlVar(item_qidGroup.qid)));
                 });
                 return totalScore;
             }
@@ -348,8 +350,8 @@ function getQuestionArray(session, isNeedQuestion) {
         function cmp(x, y) {
             return x > y ? 1 : (x < y ? -1 : 0); //等於的時候不要動
         }
-        var scoreA = valueToScore(parseInt($.getUrlVar(a.qid)));
-        var scoreB = valueToScore(parseInt($.getUrlVar(b.qid)));
+        var scoreA = valueToScore(parseInt(getUrlVar(a.qid)));
+        var scoreB = valueToScore(parseInt(getUrlVar(b.qid)));
         return cmp(scoreB, scoreA) || cmp(a.sort, b.sort); //return score是第一條件，sort為第2條件
     });
 
@@ -370,7 +372,7 @@ function getFilterArray(session, condition) {
 
     $.each(session.question, function(qIndex, item_question) {
 
-        var score = parseInt($.getUrlVar(item_question.qid));
+        var score = parseInt(getUrlVar(item_question.qid));
 
         score = valueToScore(score);
         // console.log('item_question score=' + score);
