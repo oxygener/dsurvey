@@ -67,7 +67,7 @@
 
             });
             appendHtml += '</div>';
-            console.log('appendHtml=' + appendHtml);
+            // console.log('appendHtml=' + appendHtml);
             $('#collect').append(appendHtml);
         });
 
@@ -82,9 +82,9 @@
         });
 
         //預設勾選第一個radio button
-        // $('fieldset').each(function(index, element) {
-        //     $(this).find('input').eq(0).attr('checked', true);
-        // });
+        $('fieldset').each(function(index, element) {
+            $(this).find('input').eq(0).attr('checked', true);
+        });
 
         //檢查是否有上次檢驗報告紀錄
         var lastRecordUrl = Cookies.get(COOKIE_KEY_LAST_RECORD_URL);
