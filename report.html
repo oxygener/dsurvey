@@ -257,7 +257,7 @@
         $("#downloadReport").on('click', function() {
             console.log('onclick');
             html2canvas(document.getElementById("table_canvas")).then(function(canvas) {
-                saveAs(canvas.toDataURL(), '12宮格頁面.png');
+                saveAs(canvas.toDataURL(), '優氧循環檢驗報告.png');
             });
             // html2canvas(document.getElementById("testdiv2")).then(function(canvas) {
             //     saveAs(canvas.toDataURL(), '詳細頁面.png');
@@ -268,23 +268,23 @@
 </head>
 
 <body>
-    <table width="100%" style="margin: 40px 0px 40px 0px;">
-        <tr>
-            <td style="width: 25%; text-align: center;">
-                <img src="image/report/logo.jpg">
-            </td>
-            <td style="width: 50%;text-align: center;">
-                <div class="font-blod" id="ui_title_top">My Oxygener Report
-                </div>
-                <div class="font-blod" id="ui_title_middle">個人化改善方案
-                </div>
-                <div class="font-blod" id="ui_title_bottom">優氧循環表
-                </div>
-            </td>
-            <td style="width: 25%;text-align: center;"></td>
-        </tr>
-    </table>
     <div id="table_canvas">
+        <table width="100%" style="margin: 40px 0px 40px 0px;">
+            <tr>
+                <td style="width: 25%; text-align: center;">
+                    <img src="image/report/logo.jpg">
+            </td>
+                <td style="width: 50%;text-align: center;">
+                    <div class="font-blod" id="ui_title_top">My Oxygener Report
+                    </div>
+                    <div class="font-blod" id="ui_title_middle">個人化改善方案
+                    </div>
+                    <div class="font-blod" id="ui_title_bottom">優氧循環表
+                    </div>
+                </td>
+                <td style="width: 25%;text-align: center;"></td>
+            </tr>
+        </table>
         <div style="text-align: center;">
             <p class="font-blod" id="ui_D_1"></p>
             <p class="font-blod" id="ui_D_2"></p>
@@ -293,7 +293,7 @@
             <div class="card-columns card-columns-header">
                 <div class="card card-grid-top" id="card-C-2">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-C-2">創造有利條件的方法</h4>
+                        <h4 class="card-title text-center" id="card-title-C-2">創造有利條件</h4>
                         <p id="card-C-2-default">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <ol>
                             <li class="card-text ui_C_2"></li>
@@ -319,42 +319,42 @@
             <div class="card-columns">
                 <div class="card card-grid-middle-large" id="card-A-1">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-A-1">供給性缺氧檢驗數據</h4>
+                        <h4 class="card-title text-center" id="card-title-A-1">供給性缺氧</h4>
                         <p class="card-text" id="ui_A_1_1">指數◆ </p>
                         <p class="card-text" id="ui_A_1_2"></p>
                     </div>
                 </div>
                 <div class="card  card-grid-middle-large" id="card-A-2">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-A-2">耗損性缺氧檢驗數據</h4>
+                        <h4 class="card-title text-center" id="card-title-A-2">耗損性缺氧</h4>
                         <p class="card-text" id="ui_A_2_1">指數◆ </p>
                         <p class="card-text" id="ui_A_2_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-3">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-A-3">熱性體質檢驗數據</h4>
+                        <h4 class="card-title text-center" id="card-title-A-3">熱性體質</h4>
                         <p class="card-text" id="ui_A_3_1">指數◆ </p>
                         <p class="card-text" id="ui_A_3_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-4">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-A-4">濕性體質檢驗數據</h4>
+                        <h4 class="card-title text-center" id="card-title-A-4">濕性體質</h4>
                         <p class="card-text" id="ui_A_4_1">指數◆ </p>
                         <p class="card-text" id="ui_A_4_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-A-5">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-A-5">寒性體質檢驗數據</h4>
+                        <h4 class="card-title text-center" id="card-title-A-5">寒性體質</h4>
                         <p class="card-text" id="ui_A_5_1">指數◆ </p>
                         <p class="card-text" id="ui_A_5_2"></p>
                     </div>
                 </div>
                 <div class="card" id="card-B-3">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-B-3">免疫代謝的方案</h4>
+                        <h4 class="card-title text-center" id="card-title-B-3">免疫代謝治療</h4>
                         <p id="card-B-3-default">您的代謝情形良好，無活躍的損傷發炎反應。</p>
                         <ol>
                             <li class="card-text ui_B_3"></li>
@@ -365,7 +365,7 @@
                 </div>
                 <div class="card" id="card-B-4">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-B-4">微循環改善的方案</h4>
+                        <h4 class="card-title text-center" id="card-title-B-4">微循環治療</h4>
                         <p id="card-B-4-default">您的循環狀況良好，無明顯瘀滯現象。</p>
                         <ol>
                             <li class="card-text ui_B_4"></li>
@@ -376,7 +376,7 @@
                 </div>
                 <div class="card" id="card-B-5">
                     <div class="card-body card-grid-middle-small">
-                        <h4 class="card-title text-center" id="card-title-B-5">機能復甦的方案</h4>
+                        <h4 class="card-title text-center" id="card-title-B-5">機能復甦治療</h4>
                         <p id="card-B-5-default">您的身體機能運作正常，無顯著失調現象。</p>
                         <ol>
                             <li class="card-text ui_B_5"></li>
@@ -387,7 +387,7 @@
                 </div>
                 <div class="card card-grid-middle-large" id="card-B-1">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-B-1">供養治療的方案</h4>
+                        <h4 class="card-title text-center" id="card-title-B-1">供養治療</h4>
                         <p id="card-B-1-default">您的供氧能力尚佳，請繼續保持。</p>
                         <ol>
                             <li class="card-text ui_B_1"></li>
@@ -398,7 +398,7 @@
                 </div>
                 <div class="card card-grid-middle-large" id="card-B-2">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-B-2">耗氧治療的方案</h4>
+                        <h4 class="card-title text-center" id="card-title-B-2">耗氧治療</h4>
                         <p id="card-B-2-default">您沒有嚴重的能量透支情形，請持續留意。</p>
                         <ol>
                             <li class="card-text ui_B_2"></li>
@@ -410,23 +410,27 @@
             </div>
         </div>
         <br>
+        <div style="text-align: center;">
+            <p class="font-blod" style="font-size: 1.4em">建議您可定期進行專家系統自我檢測！檢驗改善成效，掌握自身狀態</p>
+        </div>
     </div>
-    <div style="text-align: center; display: block;">
-        <div><a id="downloadReport" href="#">下載至裝置中</a></div>
-        <div><a id="back" href="index.html">重新填問卷(之後會拿掉)</a></div>
-        <br>
+    <div class="text-center">
+        <a id="downloadReport" href="#"><img src="image/report/btn_restart.jpg" class="img-fluid p-3" alt="Responsive image"></a>
+        <a id="back" href="index.html"><img src="image/report/btn_back.jpg" class="img-fluid p-3" alt="Responsive image">
+        
     </div>
-    <div style="text-align: center;">
-        <p>5. 新增靜態圖文：</p>
-        <p>優氧循環，是個將優氧醫學的知識化為行動，用於改善慢性缺氧的方法。 由於每個人的生活型態和身體狀態並不是固定不變的，為了讓計劃跟得上變化，若能循環執行這三步驟，可以更正確的找出問題、更精準的設計方案，創造更好的成果。 如何改善缺氧？反覆執行優氧循環而已。
-        </p>
+    <div class="text-center mt-5">
+        <img class="img-fluid" alt="Responsive image" src="image/report/content_top.jpg">
     </div>
-    <div style="text-align: center;">
-        <p>9. E 區靜態圖文資訊： </p>
-        <p>
-            【你的健康問題，新科技能解】 奧斯帝摩・優氧手環 核心元件的奧斯帝摩ＩＣ晶片(中華民國發明專利第I586400號)將「氣以行血」的中醫理論化為穩定可靠的科技產品，調節神經、活絡血脈；具科學依據及發明專利，促進血液循環，改善體內缺氧。 【進階預約免費熱濕寒微循環檢測】 「微循環」是氧氣供給的場域，也是缺氧治療上長久無法攻克的最後一哩路。而禍亂起於忽微，異常微循環常是缺氧的警訊；客觀的微循環檢測可輔助主觀的專家系統，更精準判讀缺氧程度。 改善缺氧，從微循環開始→https://lihi.cc/mjaAa 【有疑惑嗎？讓專家幫助你】 依世界衛生組織的調查， 慢性病預防經費：疾病形成後醫療經費＝1 : 100 預防永遠勝於治療，改善缺氧，刻不容緩。 想深入瞭解嗎？歡迎與我們聯絡。 www.oxygener.com FB：優氧專家・奧斯帝摩 LINE ID：@oxygener TEL：06-2979053 E-MAIL：service@oxygener.com
-        </p>
+
+    <div class="text-center mt-5">
+        <a href="https://lihi.cc/mjaAa"><img src="image/report/btn_restart.jpg"></a>
     </div>
+
+    <div class="text-center mt-5">
+        <img class="img-fluid" alt="Responsive image" src="image/report/content_bottom.jpg">
+    </div>
+
 </body>
 
 </html>
