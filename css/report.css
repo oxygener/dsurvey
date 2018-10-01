@@ -12,13 +12,6 @@
 
 /*檢驗報告上方title*/
 
-/*body{ 
-    font-family: LiHei Pro,微軟正黑體,Microsoft JhengHei,Arial, Helvetica, sans-serif;
-    margin: 0 auto; 
-    *margin: 0px auto;
-    _margin: 0px auto;
-}*/
-
 
 /*卡片title文字顏色*/
 
@@ -106,7 +99,7 @@
 
 
 .card-title {
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 15px 0px;
     /*title下方的margin*/
     font-size: 1.4em
         /*title size*/
@@ -128,10 +121,6 @@
     /* place for '...' */
     margin-right: -1em;
     padding-right: 1em;
-}
-
-li {
-    margin-left: -30px;
 }
 
 /* 取消限制2行，從縮減文字出發 */
