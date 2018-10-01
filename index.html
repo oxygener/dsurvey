@@ -51,6 +51,8 @@
             appendHtml += '<div class=page id=' + ('page' + sIndex) + '>';
             appendHtml += '<p>'+item_session.title+'</p>';
 
+            //todo 需要調整page 考慮修改config格式結構 (等慧倫PSD檔改好)
+
             $.each(item_session.question, function(qIndex, item_question) {
 
 
@@ -80,9 +82,9 @@
         });
 
         //預設勾選第一個radio button
-        $('fieldset').each(function(index, element) {
-            $(this).find('input').eq(0).attr('checked', true);
-        });
+        // $('fieldset').each(function(index, element) {
+        //     $(this).find('input').eq(0).attr('checked', true);
+        // });
 
         //檢查是否有上次檢驗報告紀錄
         var lastRecordUrl = Cookies.get(COOKIE_KEY_LAST_RECORD_URL);
@@ -107,13 +109,17 @@
         });
 
         $("#btn_next").click(function() {
+            //todo 檢查是否有必填未填
             gotoNextAction(++currentPage);
         });
         //問卷上/下頁 or 結束問卷
         function gotoNextAction(page) {
+
+            //todo 檢查是否有必填未填
+
             if (currentPage != 0) {
                 $("#btn_pre").show();
-            }else{
+            } else {
                 $("#btn_pre").hide();
             }
             //如果是最後一頁，跳到檢驗報告頁
@@ -155,7 +161,6 @@
 
 <body>
     <div id='collect'>
-
     </div>
     <script type="text/javascript">
     </script>

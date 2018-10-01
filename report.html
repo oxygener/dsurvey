@@ -13,7 +13,7 @@
     <script src="js/html2canvas.js"></script>
     <script src="js/formula2.js"></script>
     <script type="text/javascript">
-    var gFormID = '1FAIpQLSf61A3kcoDVT929bta3X01AMaz4ieTDYwL2Ehz9FoHVuaIVnw'; //google 表單ID [for test CopyDown + Gmerge 版本 (Responses)]
+    var gFormID = '1FAIpQLSeX5u0zEiV5Ik9wsY2zm7XeEHOrD3_yN6mztdzVttHoMrikkw'; //google 表單ID [for test CopyDown + Gmerge 版本 (Responses)]
     var gSheetParam = {}; //google sheet所需要的參數
 
     $(function() {
@@ -192,6 +192,11 @@
         console.log('initGetParam()');
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
         // vars = [];
+        //todo 這裡姓名目前hardcode，要改成動態的
+        gSheetParam['entry.1028026856'] = '蔡宜成';//姓名
+        gSheetParam['entry.618980278'] = '01/10/2018';//date
+
+        // &entry.1028026856=蔡宜成&entry.618980278=01/10/2018
         var hash; //目前不清楚vars型別是什麼?怎麼使用?
         for (var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
