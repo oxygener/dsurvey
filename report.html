@@ -24,7 +24,7 @@
         initGetParam();
         initConfig();
         initDownloadButton();
-
+        sendGoogleSheet();
         function initConfig() {
             console.log('initConfig()');
             // 讀取config檔案
@@ -184,14 +184,10 @@
         }
     });
 
-    //-----解析gSheetRequestParam-----
-    //1. 提供method取得gSheetRequestParam參數
-    //2. 組合出google sheet url
-    function getUrlVar(name) {
-        var result = gSheetParam[('entry.' + name)];
-        return typeof result != 'undefined' ? result : '1';
-    }
+    
 
+    //1.將http get參數存放到物件「gSheetParam」
+    //2.同時組合出google sheet url
     function initGetParam() {
         console.log('initGetParam()');
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -207,10 +203,17 @@
         }
     }
 
-    //send gooogle sheet request
-    function gSheetRequestParam() {
+    //1. 提供method取得物件「gSheetParam」參數
+    function getUrlVar(name) {
+        var result = gSheetParam[('entry.' + name)];
+        return typeof result != 'undefined' ? result : '1';
+    }
 
-        console.log('gSheetParam=' + JSON.stringify(gSheetParam));
+    //send gooogle sheet request
+    function sendGoogleSheet() {
+
+        // console.log('gSheetParam=' + JSON.stringify(gSheetParam));
+        console.log('https://docs.google.com/forms/d/e/' + gFormID + '/formResponse?'+JSON.stringify(gSheetParam));
         $.ajax({
             url: 'https://docs.google.com/forms/d/e/' + gFormID + '/formResponse',
             data: gSheetParam,
