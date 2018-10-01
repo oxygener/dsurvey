@@ -1,3 +1,50 @@
+/*字型*/
+.font-blod,.card-title {
+    font-family: MicrosoftJhengHeiBold,LiHei Pro;
+}
+.font-regular,.card-text {
+    font-family: 微軟正黑體,Heiti TC;
+}
+
+/*檢驗報告上方title*/
+#ui_title_top{
+    color: #34d6b7; 
+    font-size: 1.0em;
+}
+
+#ui_title_middle{
+    color: #404040; 
+    font-size: 1.6em;
+    margin: 5px 0px -10px 0px;
+}
+
+#ui_title_bottom{
+    color: #404040; 
+    font-size: 3.8em;
+}
+
+#ui_D_1 {
+    color: #36837b; 
+    font-size: 1.4em;
+    margin: -20px 0px 0px 0px;
+}
+
+#ui_D_2 {
+    color: #36837b; 
+    font-size: 1.4em;
+    margin: 10px 0px 40px 0px;
+}
+
+/*檢驗報告上方title*/
+
+/*body{ 
+    font-family: LiHei Pro,微軟正黑體,Microsoft JhengHei,Arial, Helvetica, sans-serif;
+    margin: 0 auto; 
+    *margin: 0px auto;
+    _margin: 0px auto;
+}*/
+
+
 /*卡片title文字顏色*/
 
 #card-title-A-1,
