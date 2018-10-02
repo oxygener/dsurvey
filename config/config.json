@@ -1,6 +1,71 @@
 {
   "fid": "1FAIpQLSeX5u0zEiV5Ik9wsY2zm7XeEHOrD3_yN6mztdzVttHoMrikkw",
   "version": "1",
+  "systemField":[
+    {
+    "title":"塞入資料",
+      "question": [
+        {
+          "title": "USER優氧循環表",
+          "qid": "1509588209",
+          "value": ""
+        },
+        {
+          "title": "USER建議清單",
+          "qid": "1703258285",
+          "value": ""
+        }
+      ]
+    }
+    ],
+  "inputField": [
+    {
+    "title":"聯絡資訊",
+      "question": [
+        {
+          "title": "您的姓名",
+          "qid": "1028026856",
+          "value": ""
+        },
+        {
+          "title": "您的西元出生年月日",
+          "qid": "618980278",
+          "value": ""
+        }
+      ]
+    },
+    {
+    "title":"寄到我的信箱",
+      "question": [
+        {
+          "title": "1. 您的收件電郵地址",
+          "qid": "643476795",
+          "value": ""
+        },
+        {
+          "title": "2. 您的連絡電話",
+          "qid": "1939420278",
+          "value": ""
+        }
+        ,
+        {
+          "title": "3. 您的LINE ID",
+          "qid": "20496571",
+          "value": ""
+        }
+      ]
+    },
+    {
+    "title":"服務人員",
+      "question": [
+        {
+          "title": "您的服務人員（客戶專用）",
+          "qid": "1974055469",
+          "value": ""
+        }
+      ]
+    }
+  ],
   "session": [
     {
       "title": "供給性缺氧",

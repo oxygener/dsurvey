@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/js.cookie.js"></script>
-    <!-- json序列化 -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script> -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.js"></script> -->
     <script type="text/javascript">
     var COOKIE_KEY_LAST_RECORD_URL = 'LAST_RECORD'; //上一次檢驗報告記錄
 
     var config; //json格式的config設定檔
+    var questions = [];
 
     $(function() {
         initConfig();
@@ -26,6 +24,9 @@
         //導網址
         window.location.href = pageUrl;
     }
+
+
+    
 
     function initConfig() {
         console.log('initConfig()');
@@ -41,42 +42,18 @@
         });
     }
 
-
     function init() {
         console.log('init()');
-
-        //在UI上面產生題目
-        $.each(config.session, function(sIndex, item_session) {
-            var appendHtml = '';
-            appendHtml += '<div class=page id=' + ('page' + sIndex) + '>';
-            appendHtml += '<p>'+item_session.title+'</p>';
-
-            //todo 需要調整page 考慮修改config格式結構 (等慧倫PSD檔改好)
-
-            $.each(item_session.question, function(qIndex, item_question) {
-
-
-                appendHtml += '<fieldset>';
-                appendHtml += '<legend>' + item_question.title + ' </legend>';
-                for (var i = 0; i < 5; i++) {
-                    var value = i + 1;
-                    appendHtml += '<label>' + (i + 1) + ' </label>';
-                    appendHtml += '<input type="radio" name=' + item_question.qid + ' value=' + value + '>';
-                }
-                appendHtml += '</fieldset>';
-
-            });
-            appendHtml += '</div>';
-            // console.log('appendHtml=' + appendHtml);
-            $('#collect').append(appendHtml);
-        });
-
+        initQuestions();
+        initInputField();
+        initInputSession();
 
         $('.page').hide();
         $('.page').eq(0).show();
 
-        $(window).bind('beforeunload', function(e) {
 
+
+        $(window).bind('beforeunload', function(e) {
             console.log('beforeunload');
             return '資料尚未存檔，確定是否要離開？'; //Chrome v51 (2016/04) 取消自訂wording
         });
@@ -109,14 +86,14 @@
         });
 
         $("#btn_next").click(function() {
-            //todo 檢查是否有必填未填
+            //必填未填
+            if (!checkInputField()) { return false; }
+
             gotoNextAction(++currentPage);
         });
+
         //問卷上/下頁 or 結束問卷
         function gotoNextAction(page) {
-
-            //todo 檢查是否有必填未填
-
             if (currentPage != 0) {
                 $("#btn_pre").show();
             } else {
@@ -136,17 +113,26 @@
         function onClickSubmit() {
 
             var url = 'report.html?';
+
+            //input field參數
+            url += $('#ui_if_0_0_value').attr('name') + '=' + $('#ui_if_0_0_value').val() + '&';
+            url += $('#ui_if_0_1_value').attr('name') + '=' + $('#ui_if_0_1_value').val() + '&';
+            url += $('#ui_if_1_0_value').attr('name') + '=' + $('#ui_if_1_0_value').val() + '&';
+            url += $('#ui_if_1_1_value').attr('name') + '=' + $('#ui_if_1_1_value').val() + '&';
+            url += $('#ui_if_1_2_value').attr('name') + '=' + $('#ui_if_1_2_value').val() + '&';
+            url += $('#ui_if_2_0_value').attr('name') + '=' + $('#ui_if_2_0_value').val() + '&';
+
+            //todo 暫時拿掉。
             //取得有勾選的radiobutton id + 值，並賦予到jsonObject身上。
-            $('input:checked').each(function(index, element) { //取得Radio button 有check的。
-                var qid = $(this).attr('name'); //取得google form id
-                var value = $(this).attr('value'); //取得radio button value
+            // $('input:checked').each(function(index, element) { //取得Radio button 有check的。
+            //     var qid = $(this).attr('name'); //取得google form id
+            //     var value = $(this).attr('value'); //取得radio button value
+            //     url += qid + '=' + value;
 
-                url += qid + '=' + value;
-                if (index != $('input:checked').length - 1) {
-                    url += '&';
-                }
+            //     if (index != $('input:checked').length - 1) { url += '&'; } //最後一個參數不加&
+            // });
 
-            });
+
 
             //將參數記錄至cookie，下次使用
             Cookies.set(COOKIE_KEY_LAST_RECORD_URL, url, { expires: 365 });
@@ -156,11 +142,133 @@
 
         }
     }
+
+    //將問題從config檔塞到questions[]
+    function initQuestions() {
+        $.each(config.inputField, function(cIndex, item_inputField) {
+            $.each(item_inputField.question, function(sIndex, item_question) {
+                questions[item_question.qid] = item_question.title;
+            });
+        });
+    }
+
+    //1. 提供method取得物件questions[]
+    function getQuestionsVar(name) {
+        var result = questions[name];
+        return typeof result != 'undefined' ? result : '1';
+    }
+
+    function initInputSession() {
+        var appendHtml = '';
+        //在UI上面產生題目
+        $.each(config.session, function(sIndex, item_session) {
+
+            if (sIndex == 1 || sIndex == 3 || sIndex == 4) {
+                //當sestion 0,1要在同一個page時，跑到session 1時，不要加<div class=page>屬性
+                //do nothing
+            } else {
+                appendHtml += '<div class=page id=' + ('page' + sIndex) + '>';
+            }
+
+            appendHtml += '<p>' + item_session.title + '</p>';
+
+            //todo 需要調整page 考慮修改config格式結構 (等慧倫PSD檔改好)
+            $.each(item_session.question, function(qIndex, item_question) {
+                appendHtml += '<fieldset>';
+                appendHtml += '<legend>' + item_question.title + ' </legend>';
+                for (var i = 0; i < 5; i++) {
+                    var value = i + 1;
+                    appendHtml += '<label>' + (i + 1) + ' </label>';
+                    appendHtml += '<input type="radio" name=' + item_question.qid + ' value=' + value + '>';
+                }
+                appendHtml += '</fieldset>';
+
+            });
+
+            // appendHtml += '</div>';
+
+            if (sIndex == 0 || sIndex == 2 || sIndex == 3) {
+                //當sestion 0,1要在同一個page時，跑到session 0時，不要加</div>屬性
+                //do nothing
+            } else {
+                appendHtml += '</div>';
+                $('#collect').append(appendHtml);
+                appendHtml = '';
+            }
+        });
+    }
+
+    // 設定ui inputField 
+    function initInputField() {
+
+        //聯絡資訊
+        $('#ui_if_0_0_title').html(config.inputField[0].question[0].title);
+        $('#ui_if_0_0_value').attr('name', config.inputField[0].question[0].qid);
+
+        $('#ui_if_0_1_title').html(config.inputField[0].question[1].title);
+        $('#ui_if_0_1_value').attr('name', config.inputField[0].question[1].qid);
+
+        //寄到我的信箱
+        $('#ui_if_1_0_title').html(config.inputField[1].question[0].title);
+        $('#ui_if_1_0_value').attr('name', config.inputField[1].question[0].qid);
+        $('#ui_if_1_1_title').html(config.inputField[1].question[1].title);
+        $('#ui_if_1_1_value').attr('name', config.inputField[1].question[1].qid);
+        $('#ui_if_1_2_title').html(config.inputField[1].question[2].title);
+        $('#ui_if_1_2_value').attr('name', config.inputField[1].question[2].qid);
+        //服務人員
+        $('#ui_if_2_0_title').html(config.inputField[2].question[0].title);
+        $('#ui_if_2_0_value').attr('name', config.inputField[2].question[0].qid);
+    }
+
+    //檢查是否有必填未填
+    function checkInputField() {
+
+        var isValid = true;
+        //check input valid
+        console.log('gotoNextAction');
+        $('input:visible').not(".optional").each(function() {
+            if (!$(this).val()) {
+                var qid = $(this).attr('name');
+                alert('問題「' + getQuestionsVar(qid)+'」未填');
+                isValid = false;
+            }
+        });
+
+        return isValid;
+    }
     </script>
 </head>
 
 <body>
+    <div class="page container">
+        <div>
+            <label id="ui_if_0_0_title" for="ui_if_0_0_value">name</label>
+            <input id="ui_if_0_0_value" type="text" class="form-control">
+        </div>
+        <div class="if_0">
+            <label id="ui_if_0_1_title" for="ui_if_0_1_value">name</label>
+            <input id="ui_if_0_1_value" type="date" class="form-control">
+        </div>
+    </div>
     <div id='collect'>
+    </div>
+    <div class="page container">
+        <div>
+            <label id="ui_if_1_0_title" for="ui_if_1_0_value">name</label>
+            <input id="ui_if_1_0_value" type="text" class="form-control optional">
+        </div>
+        <div>
+            <label id="ui_if_1_1_title" for="ui_if_1_1_value">name</label>
+            <input id="ui_if_1_1_value" type="text" class="form-control optional">
+        </div>
+        <div>
+            <label id="ui_if_1_2_title" for="ui_if_1_2_value">name</label>
+            <input id="ui_if_1_2_value" type="text" class="form-control optional">
+        </div>
+        <div>
+            <label id="ui_if_2_0_title" for="ui_if_2_0_value">name</label>
+            <input id="ui_if_2_0_value" type="text" class="form-control optional">
+        </div>
     </div>
     <script type="text/javascript">
     </script>
