@@ -59,9 +59,9 @@
         });
 
         //預設勾選第一個radio button
-        $('fieldset').each(function(index, element) {
-            $(this).find('input').eq(0).attr('checked', true);
-        });
+        // $('fieldset').each(function(index, element) {
+        //     $(this).find('input').eq(0).attr('checked', true);
+        // });
 
         //檢查是否有上次檢驗報告紀錄
         var lastRecordUrl = Cookies.get(COOKIE_KEY_LAST_RECORD_URL);
@@ -122,15 +122,15 @@
             url += $('#ui_if_1_2_value').attr('name') + '=' + $('#ui_if_1_2_value').val() + '&';
             url += $('#ui_if_2_0_value').attr('name') + '=' + $('#ui_if_2_0_value').val() + '&';
 
-            //todo 暫時拿掉。
-            //取得有勾選的radiobutton id + 值，並賦予到jsonObject身上。
-            // $('input:checked').each(function(index, element) { //取得Radio button 有check的。
-            //     var qid = $(this).attr('name'); //取得google form id
-            //     var value = $(this).attr('value'); //取得radio button value
-            //     url += qid + '=' + value;
+            //todo 之後要拿掉。
+            // 取得有勾選的radiobutton id + 值，並賦予到jsonObject身上。
+            $('input:checked').each(function(index, element) { //取得Radio button 有check的。
+                var qid = $(this).attr('name'); //取得google form id
+                var value = $(this).attr('value'); //取得radio button value
+                url += qid + '=' + value;
 
-            //     if (index != $('input:checked').length - 1) { url += '&'; } //最後一個參數不加&
-            // });
+                if (index != $('input:checked').length - 1) { url += '&'; } //最後一個參數不加&
+            });
 
 
 
@@ -147,6 +147,12 @@
     function initQuestions() {
         $.each(config.inputField, function(cIndex, item_inputField) {
             $.each(item_inputField.question, function(sIndex, item_question) {
+                questions[item_question.qid] = item_question.title;
+            });
+        });
+
+        $.each(config.session, function(cIndex, item_session) {
+            $.each(item_session.question, function(sIndex, item_question) {
                 questions[item_question.qid] = item_question.title;
             });
         });
@@ -222,15 +228,15 @@
 
     //檢查是否有必填未填
     function checkInputField() {
-
+        console.log('checkInputField()');
         var isValid = true;
-        //check input valid
-        console.log('gotoNextAction');
+
         $('input:visible').not(".optional").each(function() {
             if (!$(this).val()) {
                 var qid = $(this).attr('name');
-                alert('問題「' + getQuestionsVar(qid)+'」未填');
+                alert('問題「' + getQuestionsVar(qid) + '」未填');
                 isValid = false;
+                return false; //跳離each，還是會繼續走method的程式
             }
         });
 
