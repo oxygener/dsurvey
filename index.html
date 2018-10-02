@@ -59,9 +59,9 @@
         });
 
         //預設勾選第一個radio button
-        // $('fieldset').each(function(index, element) {
-        //     $(this).find('input').eq(0).attr('checked', true);
-        // });
+        $('fieldset').each(function(index, element) {
+            $(this).find('input').eq(0).attr('checked', true);
+        });
 
         //檢查是否有上次檢驗報告紀錄
         var lastRecordUrl = Cookies.get(COOKIE_KEY_LAST_RECORD_URL);
@@ -114,7 +114,7 @@
 
             var url = 'report.html?';
 
-            //input field參數
+            // 取得input field value
             url += $('#ui_if_0_0_value').attr('name') + '=' + $('#ui_if_0_0_value').val() + '&';
             url += $('#ui_if_0_1_value').attr('name') + '=' + $('#ui_if_0_1_value').val() + '&';
             url += $('#ui_if_1_0_value').attr('name') + '=' + $('#ui_if_1_0_value').val() + '&';
@@ -122,8 +122,8 @@
             url += $('#ui_if_1_2_value').attr('name') + '=' + $('#ui_if_1_2_value').val() + '&';
             url += $('#ui_if_2_0_value').attr('name') + '=' + $('#ui_if_2_0_value').val() + '&';
 
-            //todo 之後要拿掉。
-            // 取得有勾選的radiobutton id + 值，並賦予到jsonObject身上。
+
+            // 取得radio button value
             $('input:checked').each(function(index, element) { //取得Radio button 有check的。
                 var qid = $(this).attr('name'); //取得google form id
                 var value = $(this).attr('value'); //取得radio button value
