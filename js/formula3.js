@@ -208,8 +208,6 @@ function calculate_C(qmconfig) {
 
 //1. -----C----- D-[1-4]
 function calculate_D(qmconfig) {
-
-
     console.log('calculate_D()');
     var resultTitle = uiTotalValue; //總分
     var resultDatail = ''; //總分建議
@@ -227,9 +225,8 @@ function calculate_D(qmconfig) {
     var target = uiTotalValue;
     
     $.each(compareArray, function(mIndex, compare) {
-        console.log('compare='+compare +' target='+target);
+        // console.log('compare='+compare +' target='+target);
         if (target <= compare) {
-            console.log('bingo');
             resultTitle += qmconfig.D.D_2[mIndex].title;
             return false;
         }

@@ -9,6 +9,10 @@
     font-family: 微軟正黑體, Heiti TC;
 }
 
+/*一般字體*/
+.general-text {
+    font-size: 1.0em;
+}
 
 /*檢驗報告上方title*/
 
@@ -191,9 +195,7 @@
     color: #36837b;
 }
 
-.general-text {
-    font-size: 1.0em;
-}
+
 
 
 @media (min-width: 576px) {}
