@@ -4,10 +4,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- css bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- js jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- js bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- js cookie -->
     <script src="js/js.cookie.js"></script>
+
     <script type="text/javascript">
     var COOKIE_KEY_LAST_RECORD_URL = 'LAST_RECORD'; //上一次檢驗報告記錄
+    var CONFIG_DEFAULT_SELECT = 2;//radio預設選項
 
     var config; //json格式的config設定檔
     var questions = [];
@@ -60,7 +68,7 @@
 
         //預設勾選第一個radio button
         $('fieldset').each(function(index, element) {
-            $(this).find('input').eq(0).attr('checked', true);
+            $(this).find('input').eq(CONFIG_DEFAULT_SELECT).attr('checked', true);
         });
 
         //檢查是否有上次檢驗報告紀錄
@@ -246,7 +254,27 @@
 </head>
 
 <body>
+    <!-- 第1頁 -->
     <div class="page container">
+        <img class="img-fluid" alt="Responsive image" src="image/index/p1/p1_banner.png">
+        
+        <div class="text-center">
+            <a id="downloadReport" href="#btn_next"><img src="image/index/p1/p1_start.png" class="img-fluid p-2" alt="Responsive image"></a>
+            <a id="btn_lastRecordUrl" href="index.html"><img src="image/index/p1/p1_report.png" class="img-fluid p-2" alt="Responsive image">
+            </a>
+        </div>
+        <div class="text-center">
+            <a href="https://youtu.be/Pa8yMexQqtU" target="_blank"><img src="image/index/p1/p1_video.png" class="img-fluid p-2" alt="Responsive image"></a>
+        </div>
+        
+        <div class="text-center">
+            <img src="image/index/flow.jpg">
+        </div>
+
+        <div class="text-center">
+            <img src="image/index/p1/p1_progress.png">
+        </div>
+
         <div>
             <label id="ui_if_0_0_title" for="ui_if_0_0_value">name</label>
             <input id="ui_if_0_0_value" type="text" class="form-control">
@@ -254,6 +282,11 @@
         <div class="if_0">
             <label id="ui_if_0_1_title" for="ui_if_0_1_value">name</label>
             <input id="ui_if_0_1_value" type="date" class="form-control">
+        </div>
+
+        <div class="text-center">
+            <a href="#">
+            <img id="btn_next" src="image/index/p1/p1_next.jpg" class="img-fluid p-2" alt="Responsive image"></a>
         </div>
     </div>
     <div id='collect'>
@@ -279,9 +312,9 @@
     <script type="text/javascript">
     </script>
     <button id="btn_pre">上一頁</button>
-    <button id="btn_next">下一頁</button>
+    <!-- <button id="btn_next">下一頁</button> -->
     <br>
-    <button id="btn_lastRecordUrl">查看上次檢驗報告</button>
+    
 </body>
 
 </html>
