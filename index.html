@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- css bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- css main -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <!-- js jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- js bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- js cookie -->
     <script src="js/js.cookie.js"></script>
+    <!-- js for datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
     var COOKIE_KEY_LAST_RECORD_URL = 'LAST_RECORD'; //上一次檢驗報告記錄
@@ -215,11 +219,16 @@
     // 設定ui inputField 
     function initInputField() {
 
-        //聯絡資訊
-        $('#ui_if_0_0_title').html(config.inputField[0].question[0].title);
-        $('#ui_if_0_0_value').attr('name', config.inputField[0].question[0].qid);
+        $( ".datepicker" ).datepicker({
+            dateFormat : 'yy-mm-dd',
+            changeMonth : true,
+            changeYear : true,
+            yearRange: '-100y:c+nn',
+            maxDate: '-1d'
+        });
 
-        $('#ui_if_0_1_title').html(config.inputField[0].question[1].title);
+        //聯絡資訊
+        $('#ui_if_0_0_value').attr('name', config.inputField[0].question[0].qid);
         $('#ui_if_0_1_value').attr('name', config.inputField[0].question[1].qid);
 
         //寄到我的信箱
@@ -258,7 +267,7 @@
     <div class="page container">
         <img class="img-fluid" alt="Responsive image" src="image/index/p1/p1_banner.png">
         
-        <div class="text-center">
+        <div class="text-center pt-5 pb-5">
             <a id="downloadReport" href="#btn_next"><img src="image/index/p1/p1_start.png" class="img-fluid p-2" alt="Responsive image"></a>
             <a id="btn_lastRecordUrl" href="index.html"><img src="image/index/p1/p1_report.png" class="img-fluid p-2" alt="Responsive image">
             </a>
@@ -267,31 +276,31 @@
             <a href="https://youtu.be/Pa8yMexQqtU" target="_blank"><img src="image/index/p1/p1_video.png" class="img-fluid p-2" alt="Responsive image"></a>
         </div>
         
-        <div class="text-center">
-            <img src="image/index/flow.jpg">
-        </div>
+        <img class="img-fluid" alt="Responsive image" src="image/index/flow.jpg">
 
-        <div class="text-center">
-            <img src="image/index/p1/p1_progress.png">
-        </div>
+        <img class="img-fluid" alt="Responsive image" src="image/index/p1/p1_progress.png">
 
-        <div>
-            <label id="ui_if_0_0_title" for="ui_if_0_0_value">name</label>
-            <input id="ui_if_0_0_value" type="text" class="form-control">
+        <!-- Bootstrap Contact Form -->
+        <div class="container contact-form">
+            <form method="post">
+                <div class="p-3 text-center">
+                        <h3>個人基本資料（必填）</h3>
+                        <p class="pt-3">請填寫您的真實姓名與出生年月日，作為您的個人化改善方案報告依據。</p>
+                    </div>    
+                <div class="row">
+                    
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input id="ui_if_0_0_value" type="text" name="txtName" class="form-control" placeholder="姓名：" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="ui_if_0_1_value" class="form-control datepicker" placeholder="生日：">  
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="if_0">
-            <label id="ui_if_0_1_title" for="ui_if_0_1_value">name</label>
-            <input id="ui_if_0_1_value" type="date" class="form-control">
-        </div>
-    
-        <!-- 未完成 -->
-        <!-- <div class="text-center">
-            <a href="#">
-                <button id="btn_next">
-                    <a><img src="image/index/p1/p1_next.jpg" class="img-fluid p-2" alt="Responsive image"></a>
-                </button>
-            
-        </div> -->
     </div>
     <div id='collect'>
     </div>
@@ -316,9 +325,11 @@
     <script type="text/javascript">
     </script>
     <div class="text-center">
-    <button id="btn_pre">上一頁</button>
+    <!-- <button id="btn_pre">上一頁</button> -->
 
-    <button id="btn_next">下一頁</button>
+    <div class="text-center">
+        <img id="btn_next" src="image/index/p1/p1_next.jpg" class="img-fluid p-2" alt="Responsive image">
+    </div>
     </div>
     
     <br>

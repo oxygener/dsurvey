@@ -1,0 +1,46 @@
+/*Bootstrap Contact Form*/
+
+body{
+    /*background: -webkit-linear-gradient(left, #0072ff, #00c6ff);*/
+}
+.contact-form{
+    background: #fff;
+    margin-bottom: 5%;
+    width: 70%;
+}
+.contact-form .form-control{
+    border-radius:1.6rem;
+}
+
+.form-control , ::-webkit-input-placeholder{
+	height: 60px;
+	border-color: #3b5562;
+	color: #3b5562;
+}
+
+h3 ,p{
+	color: #3b5562;
+}
+
+/* input field hint 目前因為input class=form-control 會沒作用，原因不明*/
+::-webkit-input-placeholder { 
+    color:  #3b5562;
+}
+
+.contact-form form{
+    padding: 10%;
+}
+.contact-form form .row{
+    margin-bottom: -7%;
+}
+
+.contact-form .btnContact {
+    width: 50%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: #dc3545;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
