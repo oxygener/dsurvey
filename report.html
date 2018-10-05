@@ -141,7 +141,7 @@
             $.each($('.ui_B_3'), function(index, data) {
                 var data_B_3 = B_typeB[0];
                 if ((index >= data_B_3.length)) {
-                    console.log('ui_B_3 index=' + index);
+                    // console.log('ui_B_3 index=' + index);
                     $(this).hide();
                     return; //超過長度
                 }
@@ -224,7 +224,7 @@
         gSheetParam['entry.' + gMergeQid] = gMergeParam.toString();//toString預設就會使用comma隔開所有參數
         
 
-        console.log('send google sheet參數=' + JSON.stringify(gSheetParam));
+        // console.log('send google sheet參數=' + JSON.stringify(gSheetParam));
         // console.log('https://docs.google.com/forms/d/e/' + gFormID + '/formResponse?' + JSON.stringify(gSheetParam));
         $.ajax({
             url: 'https://docs.google.com/forms/d/e/' + gFormID + '/formResponse',
@@ -254,7 +254,7 @@
         });
 
         function getUiData(uiTypeObject){
-            console.log('getUiData()');
+            // console.log('getUiData()');
             //B_typeA
             $.each(uiTypeObject, function(object, data) {
                 for(var index=0;index<3;index++) {
@@ -336,7 +336,7 @@
                 <div class="card card-grid-top" id="card-C-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-2">創造有利條件</h4>
-                        <p id="card-C-2-default">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
+                        <p class="card-text" id="card-C-2-default">顯然您已成功克服那些在生活中經常阻礙我們達成目標的誘惑！</p>
                         <ol class="pl-2 pl-lg-4">
                             <li class="card-text ui_C_2"></li>
                             <li class="card-text ui_C_2"></li>
@@ -347,7 +347,7 @@
                 <div class="card card-grid-top" id="card-C-1">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-C-1">聚焦內在的方法</h4>
-                        <p id="card-C-1-default">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
+                        <p class="card-text" id="card-C-1-default">「目標」是行為的趨力，顯然您已確實掌握目標，毋忘初衷。</p>
                         <ol class="pl-2 pl-lg-4">
                             <li class="card-text ui_C_1"></li>
                             <li class="card-text ui_C_1"></li>
@@ -397,7 +397,7 @@
                 <div class="card" id="card-B-3">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-3">免疫代謝治療</h4>
-                        <p id="card-B-3-default">您的代謝情形良好，無活躍的損傷發炎反應。</p>
+                        <p class="card-text" id="card-B-3-default">您的代謝情形良好，無活躍的損傷發炎反應。</p>
                         <ol class="pl-2">
                             <li class="card-text ui_B_3"></li>
                             <li class="card-text ui_B_3"></li>
@@ -408,7 +408,7 @@
                 <div class="card" id="card-B-4">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-4">微循環治療</h4>
-                        <p id="card-B-4-default">您的循環狀況良好，無明顯瘀滯現象。</p>
+                        <p class="card-text" id="card-B-4-default">您的循環狀況良好，無明顯瘀滯現象。</p>
                         <ol class="pl-2">
                             <li class="card-text ui_B_4"></li>
                             <li class="card-text ui_B_4"></li>
@@ -419,7 +419,7 @@
                 <div class="card" id="card-B-5">
                     <div class="card-body card-grid-middle-small">
                         <h4 class="card-title text-center" id="card-title-B-5">機能復甦治療</h4>
-                        <p id="card-B-5-default">您的身體機能運作正常，無顯著失調現象。</p>
+                        <p class="card-text" id="card-B-5-default">您的身體機能運作正常，無顯著失調現象。</p>
                         <ol class="pl-2">
                             <li class="card-text ui_B_5"></li>
                             <li class="card-text ui_B_5"></li>
@@ -429,8 +429,8 @@
                 </div>
                 <div class="card card-grid-middle-large" id="card-B-1">
                     <div class="card-body">
-                        <h4 class="card-title text-center" id="card-title-B-1">供養治療</h4>
-                        <p id="card-B-1-default">您的供氧能力尚佳，請繼續保持。</p>
+                        <h4 class="card-title text-center" id="card-title-B-1">供氧治療</h4>
+                        <p class="card-text" id="card-B-1-default">您的供氧能力尚佳，請繼續保持。</p>
                         <ol class="pl-2">
                             <li class="card-text ui_B_1"></li>
                             <li class="card-text ui_B_1"></li>
@@ -441,7 +441,7 @@
                 <div class="card card-grid-middle-large" id="card-B-2">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="card-title-B-2">耗氧治療</h4>
-                        <p id="card-B-2-default">您沒有嚴重的能量透支情形，請持續留意。</p>
+                        <p class="card-text" id="card-B-2-default">您沒有嚴重的能量透支情形，請持續留意。</p>
                         <ol class="pl-2">
                             <li class="card-text ui_B_2"></li>
                             <li class="card-text ui_B_2"></li>
