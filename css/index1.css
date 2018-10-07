@@ -1,10 +1,23 @@
 /*字型*/
-.font-blod {
+.font-bold {
     font-family: MicrosoftJhengHeiBold, LiHei Pro;
 }
 
 .font-regular {
     font-family: 微軟正黑體, Heiti TC;
+}
+
+
+#page2-radio-header-title,
+#page3-radio-header-title,
+#page4-radio-header-title {
+    font-size: 1.4em;
+}
+
+#page2-radio-header-subtitle,
+#page3-radio-header-subtitle,
+#page4-radio-header-subtitle {
+    font-size: 1.0em;
 }
 
 /*Bootstrap Contact Form*/
@@ -94,6 +107,18 @@
 @media (min-width: 768px) {}
 
 @media (min-width: 992px) {
+
+    #page2-radio-header-title,
+    #page3-radio-header-title,
+    #page4-radio-header-title {
+        font-size: 1.8em;
+    }
+
+    #page2-radio-header-subtitle,
+    #page3-radio-header-subtitle,
+    #page4-radio-header-subtitle {
+        font-size: 1.2em;
+    }
 
 
     .contact-form {
