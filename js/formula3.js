@@ -70,13 +70,12 @@ function calculate_A(config, qmconfig) {
 
     //計算D-1
     var tempValueMax = Math.max.apply(null, totalScoreArray);
-    var tempValueAverage = (totalSumScore / config.session.length);
+    var tempValueAverage = (totalSumScore / 5);//不能使用config.session.length當分母，因為單項平均分數不包含自控力。因此直接hardcode分母=5
     //1.綜合平均值 2.取4捨5入到小數第1位
     uiTotalValue = (tempValueMax + tempValueAverage) / 2;
     uiTotalValue = Math.round(uiTotalValue * 10) / 10;
 
     // console.log('resultArray=' + JSON.stringify(resultArray));
-
     return resultArray;
 }
 
@@ -215,7 +214,7 @@ function calculate_D(qmconfig) {
 
     //--------title--------
     resultTitle = qmconfig.D.D_1[0].title + ' ' + uiTotalValue + '，';
-    console.log(resultTitle);
+    // console.log(resultTitle);
     //D-1
     // resultDatail += qmconfig.D.D_1[0].title;
     //D-2
