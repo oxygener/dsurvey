@@ -176,21 +176,28 @@ function initInputField() {
         changeMonth: true,
         changeYear: true,
         yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        maxDate: '-1d',
+
     });
 
     //page1 聯絡資訊
+    //title
+    $('#page1-contact-title').html(config.page[0].title);
+    //subtitle
+    $('#page1-contact-subtitle').html(config.page[1].subtitle);
+    //input 姓名
+    $('#ui_if_0_0_value').attr('placeholder', config.inputField[0].question[0].title);
     $('#ui_if_0_0_value').attr('name', config.inputField[0].question[0].qid);
+    //input 生日
+    $('#ui_if_0_1_value').attr('placeholder', config.inputField[0].question[1].title);
     $('#ui_if_0_1_value').attr('name', config.inputField[0].question[1].qid);
 
     //page2
-    $('#page2-radio-header-title').html(config.page[1].title);
-    $('#page2-radio-header-subtitle').html(config.page[1].subtitle);
-
+    $('#page2-radio-header-title').html(config.page[1].title);//title
+    $('#page2-radio-header-subtitle').html(config.page[1].subtitle);//subtitle
     //page3
     $('#page3-radio-header-title').html(config.page[2].title);
     $('#page3-radio-header-subtitle').html(config.page[2].subtitle);
-
     //page4
     $('#page4-radio-header-title').html(config.page[3].title);
     $('#page4-radio-header-subtitle').html(config.page[3].subtitle);
@@ -204,6 +211,13 @@ function initInputField() {
         $('#ui_if_1_'+index+'_value').attr('name', qid);
     }
     //page5 您的服務人員（客戶專用）
+    //title
+    $('#page5-1-contact-title').html(config.page[4].title);
+    $('#page5-1-contact-subtitle').html(config.page[4].title);
+    $('#page5-2-contact-title').html(config.page[5].title);
+    $('#page5-2-contact-subtitle').html(config.page[5].title);
+    //subtitle
+    $('#page1-contact-subtitle').html(config.page[1].subtitle);
     $('#ui_if_2_0_value').attr('placeholder', config.inputField[2].question[0].title);
     $('#ui_if_2_0_value').attr('name', config.inputField[2].question[0].qid);
 }
