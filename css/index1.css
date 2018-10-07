@@ -47,13 +47,13 @@
     color: #3b5562;
 }
 
-.contact-form form {
+/*.contact-form form {
     padding: 5%;
 }
 
 .contact-form form .row {
     margin-bottom: -7%;
-}
+}*/
 
 /*.contact-form .btnContact {
     border: none;
@@ -83,12 +83,12 @@
 }
 
 .radio-title-hint {
-    font-size: 0.6em;
+    font-size: 0.8em;
     color: #5ea8a9;
 }
 
 .radio-title {
-    font-size: 1.2em;
+    font-size: 1.6em;
     color: black;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .radio-number {
-    font-size: 1.0em;
+    font-size: 1.6em;
 }
 
 
