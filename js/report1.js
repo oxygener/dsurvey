@@ -7,9 +7,20 @@ $(function() {
 
     var qmconfig; //json格式的question mapping設定檔
 
+    initLoadingAnimation();
     initGetParam();
     initConfig();
     initDownloadButton();
+
+    function initLoadingAnimation(){
+        console.log('initLoadingImage()');
+        $("#report").hide();
+        setTimeout(function() {
+            $( "#loading" ).fadeOut( "1000", function() {
+                $( "#report" ).fadeIn( "100", function() {});
+            });
+        }, 2000);
+    }
 
 
     function initConfig() {
