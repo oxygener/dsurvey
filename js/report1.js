@@ -8,7 +8,7 @@ $(function() {
 
     var qmconfig; //json格式的question mapping設定檔
 
-    // initLoadingAnimation();
+    initLoadingAnimation();
     initGetParam();
     initConfig();
     initDownloadButton();

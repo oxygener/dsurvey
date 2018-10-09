@@ -229,8 +229,8 @@
 
     /*限制card的高度*/
     .card-grid-top {
-        min-height: 180px;
-        max-height: 180px;
+        min-height: 200px;
+        max-height: 200px;
     }
 
     .card-grid-middle-large {
