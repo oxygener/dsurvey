@@ -2,8 +2,9 @@ var gFormID = '';
 var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
 
+
 $(function() {
-    console.log('start()');
+    console.log('start() ver=4');
 
     var qmconfig; //json格式的question mapping設定檔
 
@@ -15,13 +16,15 @@ $(function() {
     function initLoadingAnimation(){
         console.log('initLoadingImage()');
         $("#report").hide();
-        setTimeout(function() {
-            $( "#loading" ).fadeOut( "1000", function() {
-                $( "#report" ).fadeIn( "100", function() {});
-            });
-        }, 2000);
+        $('#loadingimg').imgLoad(function(){
+            // 圖片讀取完成
+            setTimeout(function() {
+                $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
+                    $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
+                });
+            }, 2000);
+        });
     }
-
 
     function initConfig() {
         console.log('initConfig()');
@@ -304,3 +307,25 @@ function initDownloadButton() {
         // });
     });
 }
+
+/**
+ * 當圖片讀取finish 回傳callback
+ * Trigger a callback when 'this' image is loaded:
+ * @param {Function} callback
+ */
+(function($){
+    $.fn.imgLoad = function(callback) {
+        return this.each(function() {
+            if (callback) {
+                if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+                    callback.apply(this);
+                }
+                else {
+                    $(this).on('load', function(){
+                        callback.apply(this);
+                    });
+                }
+            }
+        });
+    };
+})(jQuery);
