@@ -214,11 +214,10 @@ function initInputField() {
     //page5 您的服務人員（客戶專用）
     //title
     $('#page5-1-contact-title').html(config.page[4].title);
-    $('#page5-1-contact-subtitle').html(config.page[4].title);
     $('#page5-2-contact-title').html(config.page[5].title);
-    $('#page5-2-contact-subtitle').html(config.page[5].title);
     //subtitle
-    $('#page1-contact-subtitle').html(config.page[1].subtitle);
+    $('#page5-1-contact-subtitle').html(config.page[4].subtitle);
+    $('#page5-2-contact-subtitle').html(config.page[5].subtitle);
     $('#ui_if_2_0_value').attr('placeholder', config.inputField[2].question[0].title);
     $('#ui_if_2_0_value').attr('name', config.inputField[2].question[0].qid);
 }
