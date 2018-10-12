@@ -226,13 +226,13 @@
     }
 
     .card-grid-middle-large {
-        min-height: 345px;
-        max-height: 345px;
+        min-height: 354px;
+        max-height: 354px;
     }
 
     .card-grid-middle-small {
-        min-height: 224px;
-        max-height: 224px;
+        min-height: 230px;
+        max-height: 230px;
     }
 
     /*C-1,C-2 內縮margin*/
