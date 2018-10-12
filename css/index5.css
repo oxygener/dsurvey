@@ -1,11 +1,17 @@
 /*字型*/
-.font-bold {
-    font-family: MicrosoftJhengHeiBold, LiHei Pro;
+
+*{
+    font-family: Microsoft JhengHei,Heiti TC;
 }
 
-.font-regular {
-    font-family: 微軟正黑體, Heiti TC;
+/*粗體*/
+.font-blod,
+.card-title
+{
+    font-weight:bold;
 }
+
+
 
 
 #page2-radio-header-title,
