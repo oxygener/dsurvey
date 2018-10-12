@@ -3,17 +3,18 @@ var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
 var isNeedInsert = false;
 var reportLink = '';//insert google sheet的連結，不會重複insert google sheet
-var deviceAgent = navigator.userAgent.toLowerCase();//裝置agent
+
 
 $(function() {
-    console.log('start() ver=6');
+    // console.log('start() ver=6');
+    alert('start() ver=7');
     isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
     initLoadingAnimation();
     initGetParam();
     initConfig();
-    initDownloadButton();
+    // initDownloadButton();
 
     function initLoadingAnimation(){
         console.log('initLoadingImage()');
@@ -355,6 +356,7 @@ function initDownloadButton() {
 
 //android手機顯示hint
 function isDownloadAndroidHintShow(){
+    var deviceAgent = navigator.userAgent.toLowerCase();//裝置agent
     var agentID = deviceAgent.match(/(android)/);
     if (agentID) {
         return true;
@@ -365,6 +367,7 @@ function isDownloadAndroidHintShow(){
 
 //iOS手機不顯示下載按鈕
 function isDownloadButtonShow(){
+    var deviceAgent = navigator.userAgent.toLowerCase();//裝置agent
     $("#agent").append(deviceAgent);
     var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
     if (agentID) {
