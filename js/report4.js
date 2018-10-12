@@ -327,7 +327,7 @@ function initDownloadButton() {
     $("#downloadReport").on('click', function() {
         console.log('initDownloadButton()11');
 
-        html2canvas(document.getElementById("#capture")).then(function(canvas) {
+        html2canvas(document.getElementById("capture")).then(function(canvas) {
             var link = document.createElement('a');
             link.download = '優氧循環檢驗報告.jpg';
             link.href = canvas.toDataURL("image/jpeg",0.5);
