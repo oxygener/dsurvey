@@ -1,4 +1,3 @@
-alert('report4.js');
 var gFormID = '';
 var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
@@ -8,14 +7,14 @@ var reportLink = '';//insert google sheet的連結，不會重複insert google s
 
 $(function() {
     // console.log('start() ver=6');
-    alert('start() ver=7');
+    // alert('start() ver=7');//todo test
     isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
     initLoadingAnimation();
     initGetParam();
     initConfig();
-    // initDownloadButton();
+    initDownloadButton();
 
     function initLoadingAnimation(){
         console.log('initLoadingImage()');
