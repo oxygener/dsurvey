@@ -11,23 +11,23 @@ $(function() {
     isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
-    // initLoadingAnimation();
+    initLoadingAnimation();
     initGetParam();
     initConfig();
     initDownloadButton();
 
-    // function initLoadingAnimation(){
-    //     console.log('initLoadingImage()');
-    //     $("#report").hide();
-    //     $('#loadingimg').imgLoad(function(){
-    //         // 圖片讀取完成
-    //         setTimeout(function() {
-    //             $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
-    //                 $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
-    //             });
-    //         }, 2700);
-    //     });
-    // }
+    function initLoadingAnimation(){
+        console.log('initLoadingImage()');
+        $("#report").hide();
+        $('#loadingimg').imgLoad(function(){
+            // 圖片讀取完成
+            setTimeout(function() {
+                $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
+                    $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
+                });
+            }, 2700);
+        });
+    }
 
     function initConfig() {
         console.log('initConfig()');
