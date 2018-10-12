@@ -11,7 +11,7 @@ $(function() {
     isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
-    initLoadingAnimation();
+    // initLoadingAnimation();
     initGetParam();
     initConfig();
     initDownloadButton();
