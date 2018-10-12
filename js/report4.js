@@ -327,13 +327,20 @@ function initDownloadButton() {
     $("#downloadReport").on('click', function() {
         console.log('initDownloadButton()11');
 
-        html2canvas(document.querySelector("#capture")).then(canvas => {
-            // saveAs(canvas.toDataURL(), '優氧循環檢驗報告.png');
+        html2canvas(document.getElementById("#capture")).then(function(canvas) {
             var link = document.createElement('a');
-              link.download = '優氧循環檢驗報告.jpg';
-              link.href = canvas.toDataURL("image/jpeg",0.5);
-              link.click();
+            link.download = '優氧循環檢驗報告.jpg';
+            link.href = canvas.toDataURL("image/jpeg",0.5);
+            link.click();
         });
+
+        // html2canvas(document.querySelector("#capture")).then(canvas => {
+        //     // saveAs(canvas.toDataURL(), '優氧循環檢驗報告.png');
+        //     var link = document.createElement('a');
+        //     link.download = '優氧循環檢驗報告.jpg';
+        //     link.href = canvas.toDataURL("image/jpeg",0.5);
+        //     link.click();
+        // });
         // html2canvas(document.getElementById("testdiv2")).then(function(canvas) {
         //     saveAs(canvas.toDataURL(), '詳細頁面.png');
         // });
