@@ -4,14 +4,14 @@
 .font-blod,
 .card-title
 {
-    font-family: "Microsoft JhengHei UI Bold", "Microsoft JhengHei Bold" , LiHei Pro;
+    font-family: Microsoft JhengHei,LiHei Pro;
 }
 
 /*細體*/
 .font-regular,
 .card-text,
 {
-    font-family: 微軟正黑體, Heiti TC;
+    font-family: Microsoft JhengHei,微軟正黑體,Heiti TC;
 }
 
 /*一般字體*/
