@@ -2,8 +2,8 @@
 
 /*粗體*/
 .font-blod,
-.card-title,
-p  {
+.card-title
+{
     font-family: "Microsoft JhengHei UI Bold", "Microsoft JhengHei Bold" , LiHei Pro;
 }
 
