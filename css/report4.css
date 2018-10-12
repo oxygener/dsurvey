@@ -1,13 +1,16 @@
 /*字型*/
+
+/*粗體*/
 .font-blod,
-.card-title {
-    font-family: MicrosoftJhengHeiBold, LiHei Pro;
+.card-title,
+p  {
+    font-family: "Microsoft JhengHei UI Bold", "Microsoft JhengHei Bold" , LiHei Pro;
 }
 
+/*細體*/
 .font-regular,
 .card-text,
-.card-title,
-p {
+{
     font-family: 微軟正黑體, Heiti TC;
 }
 
@@ -243,11 +246,6 @@ p {
     /*.card-grid-top .card-body {
     margin: 0px 40px 0px 40px;*/
 }
-
-.card-title {
-    font-size: 1.6em;
-}
-
 
 
 /* Footer */

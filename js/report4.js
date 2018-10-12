@@ -6,7 +6,7 @@ var reportLink = '';//insert google sheet的連結，不會重複insert google s
 var deviceAgent = navigator.userAgent.toLowerCase();//裝置agent
 
 $(function() {
-    console.log('start() ver=5');
+    console.log('start() ver=6');
     isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
@@ -24,7 +24,7 @@ $(function() {
                 $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
                     $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
                 });
-            }, 4000);
+            }, 2700);
         });
     }
 
