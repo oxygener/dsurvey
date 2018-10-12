@@ -5,7 +5,9 @@
 }
 
 .font-regular,
-.card-text {
+.card-text,
+.card-title,
+p {
     font-family: 微軟正黑體, Heiti TC;
 }
 
