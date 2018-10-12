@@ -1,3 +1,4 @@
+alert('report4.js');
 var gFormID = '';
 var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
