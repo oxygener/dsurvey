@@ -190,7 +190,7 @@ function initInputField() {
     //title
     $('#page1-contact-title').html(config.page[0].title);
     //subtitle
-    $('#page1-contact-subtitle').html(config.page[1].subtitle);
+    $('#page1-contact-subtitle').html(config.page[0].subtitle);
     //input 姓名
     $('#ui_if_0_0_value').attr('placeholder', config.inputField[0].question[0].title);
     $('#ui_if_0_0_value').attr('name', config.inputField[0].question[0].qid);
