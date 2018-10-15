@@ -330,7 +330,7 @@ function initDownloadButton() {
         html2canvas(document.getElementById("capture")).then(function(canvas) {
             var link = document.createElement('a');
             link.download = '優氧循環檢驗報告.jpg';
-            link.href = canvas.toDataURL("image/jpeg",0.5);
+            link.href = canvas.toDataURL("image/jpg",1.0);
             link.click();
         });
 
