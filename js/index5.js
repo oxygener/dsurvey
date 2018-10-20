@@ -251,21 +251,24 @@ function initSessionUI() {
     var template_type_A = Handlebars.compile(source_type_A);
     var template_type_B = Handlebars.compile(source_type_B);
 
+
     for(var sIndex=0;sIndex<6;sIndex++) {
         var session = config.session[sIndex].question;
         //hint text
 
-        //取得page的element ID
-        var pageIndex = 0;
-        if (sIndex==0 || sIndex==1) {pageIndex = 2;}
-        if (sIndex==2 || sIndex==3 || sIndex==4) {pageIndex = 3;}
-        if (sIndex==5) {pageIndex = 4;}
+        
+        var pageIndex = 0;//取得page的element ID
+        var page_group_color = '';//取得group page的css name
+        if (sIndex==0 || sIndex==1) {pageIndex = 2; page_group_color="group-color-page2";}
+        if (sIndex==2 || sIndex==3 || sIndex==4) {pageIndex = 3; page_group_color="group-color-page3";}
+        if (sIndex==5) {pageIndex = 4; page_group_color="group-color-page4";}
 
         //取得hint text
         var hintText = config.page[pageIndex-1].hint;//+'('+(index+1)+')'; 
 
         $.each(session, function(index, data) {
-            var context = { title: data.title, name: data.qid, hint: hintText};
+            // var context = { title: data.title, name: data.qid, hint: hintText};
+            var context = {title: data.title, name: data.qid, hint:data.hint, number:data.number, color:page_group_color};
             var type = data.type;
             var html;
             if (type=='B') {

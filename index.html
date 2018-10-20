@@ -28,8 +28,11 @@
     <!-- ui templete -->
     <script id="template-radio-type-A" type="text/x-handlebars-template">
         <div class="radio-box  pt-2 pt-lg-4  pb-lg-5 mb-lg-5">
-                <p class="radio-title-hint">{{hint}}</p>
-                <p class="radio-title font-regular mb-3 mb-lg-5">{{title}}</p>
+                <p class="radio-title-hint {{color}}">{{hint}}</p>
+                <div class="radio-title font-regular mb-3 mb-lg-5">
+                    <div class="d-inline {{color}}">{{number}}</div>
+                    <div class="d-inline">{{title}}</div>
+                </div>
                 <fieldset>
                     <div class="form-group radio-type-A">
                         <div class="">
@@ -53,8 +56,11 @@
 
     <script id="template-radio-type-B" type="text/x-handlebars-template">
         <div class="radio-box  pt-2 pt-lg-4  pb-lg-5 mb-lg-5">
-                <p class="radio-title-hint">{{hint}}</p>
-                <p class="radio-title font-regular mb-3 mb-lg-5">{{title}}</p>
+                <p class="radio-title-hint {{color}}">{{hint}}</p>
+                <div class="radio-title font-regular mb-3 mb-lg-5">
+                    <div class="d-inline {{color}}">{{number}}</div>
+                    <div class="d-inline">{{title}}</div>
+                </div>
                 <fieldset>
                     <div class="form-group radio-type-B">
                         <div class="" >

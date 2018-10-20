@@ -213,7 +213,6 @@ function calculate_D(qmconfig, userName) {
     
     //resultTitle 格式 = 1;[使用者名稱] + 2.[總分] + 3.[總分評語]
     //組合[使用者名稱] 
-    console.log('userName='+userName);
     userName = ((common_mode == COMMON_MODE_NORMAL) ? userName : COMMON_MODE_EXHIBITION_NAME);
     resultTitle += userName;
     
@@ -271,7 +270,6 @@ function calculate_D(qmconfig, userName) {
         }
     }
 
-    console.log('resultTitle='+resultTitle);
     //--------detail--------
     return new DataTypeB(resultTitle, resultDatail);
 }

@@ -11,8 +11,17 @@
     font-weight:bold;
 }
 
+.group-color-page2{
+    color: #42aaaa;
+}
 
+.group-color-page3{
+    color: #ff665c;
+}
 
+.group-color-page4{
+    color: #7095c1;
+}
 
 #page2-radio-header-title,
 #page3-radio-header-title,
@@ -90,7 +99,6 @@
 
 .radio-title-hint {
     font-size: 0.8em;
-    color: #5ea8a9;
 }
 
 .radio-title {
