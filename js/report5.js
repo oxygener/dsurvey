@@ -3,6 +3,7 @@ var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
 var isNeedInsert = false;
 var reportLink = '';//insert google sheet的連結，不會重複insert google sheet
+var userName = '';//使用者在問卷填的名字
 
 
 $(function() {
@@ -12,7 +13,7 @@ $(function() {
     var qmconfig; //json格式的question mapping設定檔
 
     initLoadingAnimation();
-    initGetParam();
+    
     initConfig();
     initDownloadButton();
 
@@ -54,7 +55,9 @@ $(function() {
             success: function(data) {
                 // console.log('initQuestionMapping() success');
                 qmconfig = data;
+                initHttpGet();
                 updateConfig();
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -70,11 +73,6 @@ $(function() {
         $.each(config.session, function(i, item_session) {
             //跑完所有question
             $.each(item_session.question, function(j, item_question) {
-
-                // console.log('getUrlVar='+$.getUrlVar(item_question.qid));
-                // item_question.value = $.getUrlVar(item_question.qid); // json object set value
-
-                //todo 問題還沒建立完成，所以部分item_question.qid會拿到空的qid
                 var qid = getUrlVar(item_question.qid);
                 if (typeof qid != 'undefined') {
                     item_question.value = getUrlVar(item_question.qid); // json object set value    
@@ -95,7 +93,7 @@ $(function() {
         var B_typeA = calculate_B_typeA(qmconfig);
         var B_typeB = calculate_B_typeB(qmconfig);
         var C = calculate_C(qmconfig);
-        var D = calculate_D(qmconfig);
+        var D = calculate_D(qmconfig,userName);
 
         updateUI(B_typeA);
         updateUI_B_typeB(B_typeB);
@@ -187,8 +185,9 @@ $(function() {
     }
 
     function updateUI_D(D) {
-        $('#ui_D_1_4').html(D.title.split(",")[0]);
-        $('#ui_D_1_5').html(D.title.split(",")[1]);
+        $('#ui_D_1_1').html(D.title.split(",")[0]);
+        $('#ui_D_1_2').html(D.title.split(",")[1]);
+        $('#ui_D_1_3').html(D.title.split(",")[2]);
 
         $('#ui_D_2').append(D.detail);
     }
@@ -197,35 +196,52 @@ $(function() {
 
 //1.將http get參數存放到物件「gSheetParam」
 //2.組合出google sheet url 「reportLink」
-function initGetParam() {
-    console.log('initGetParam()');
+function initHttpGet() {
+    console.log('initHttpGet()');
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     reportLink += window.location.href.split('?')[0] + '?';
+
+    var KEY_USER_NAME = config.inputField[0].question[0].qid;//用戶姓名qid，需要動態取得，因為qid不是固定(正式/測試不一樣)
+
     
     var hash;
     for (var i = 0; i < hashes.length; i++) {
         hash = hashes[i].split('=');
-
         var key = hash[0];
         var value = hash[1];
-        if (key == KEY_INSERT) {
-            //如果是非問卷題目，特殊處理
-            if (value == VALUE_INSERT_TRUE) {
-                //要insert google sheet
-                isNeedInsert = true;
-            }
-        }else{
-            //問卷題目
-            reportLink += (key + '=' + value + '&');
-            gSheetParam['entry.' + key] = decodeURIComponent(value);    
+
+        if(key == KEY_USER_NAME) {//取得用戶姓名
+            userName = decodeURIComponent(value);
+            continue;
         }
+
+        if(key == KEY_INSERT) {//取得是否需要insert google sheet
+            if (value == VALUE_INSERT_TRUE) {
+                isNeedInsert = true;//要insert google sheet，將insert開關打開
+            }
+            continue;
+        }
+
+        //問卷題目
+        reportLink += (key + '=' + value + '&');
+        gSheetParam['entry.' + key] = decodeURIComponent(value); 
+
+        // if (key == KEY_INSERT) {//如果Key=是否需要insert google sheet
+        //     if (value == VALUE_INSERT_TRUE) {
+        //         isNeedInsert = true;//要insert google sheet，將insert開關打開
+        //     }
+        // }else{
+        //     //問卷題目
+        //     reportLink += (key + '=' + value + '&');
+        //     gSheetParam['entry.' + key] = decodeURIComponent(value);    
+        // }
     }
     //如果reportLink最後是「?」，則移除
     if (reportLink.charAt(reportLink.length - 1) == '&') {
         reportLink = reportLink.substring(0, reportLink.length - 1);
     }
     // console.log('reportLink='+reportLink);
-    // console.log('initGetParam()='+JSON.stringify(gSheetParam));
+    // console.log('initHttpGet()='+JSON.stringify(gSheetParam));
 }
 
 //1. 提供method取得物件「gSheetParam」參數

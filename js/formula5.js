@@ -8,7 +8,6 @@ var uiTotalValue; //D-1要呈現在UI，總「分數」，其它method會用到�
 function calculate_A(config, qmconfig) {
     console.log('calculate_A()');
     var resultArray = [];
-
     var totalScoreArray = []; //所有session分數陣列 -> 為了取最大值 (將5大類分數陳列)
     var totalSumScore = 0; //所有session分數加總 -> 為了取平均值 (將5大類分數累加)
 
@@ -204,23 +203,25 @@ function calculate_C(qmconfig) {
     return uiResult;
 }
 
-//1. -----C----- D-[1-4]
-function calculate_D(qmconfig) {
+
+//D-[1-4]
+function calculate_D(qmconfig, userName) {
     console.log('calculate_D()');
-    var resultTitle = uiTotalValue; //
+    var resultTitle = '';
     var resultDatail = ''; //總分建議
     var scoreArray = uiValue; //各項分數
     
-
-    //resultTitle 格式 = [總分] + [,] + [，目前沒有嚴重的慢性缺氧病狀，恭喜您！]
-    //[,]用來隔開，讓上層使用
-
-
-    //resultTitle = D-1 + D-2
+    //resultTitle 格式 = 1;[使用者名稱] + 2.[總分] + 3.[總分評語]
+    //組合[使用者名稱] 
+    console.log('userName='+userName);
+    userName = ((common_mode == COMMON_MODE_NORMAL) ? userName : COMMON_MODE_EXHIBITION_NAME);
+    resultTitle += userName;
     
-    //D-2
-    //根據分數，取得對應range文字wording
-    //耦合高，暫時維持現狀。
+    //組合[總分] 
+    resultTitle += ',' + uiTotalValue;//[,]隔開array
+
+    //組合[總分評語] 
+    //根據分數，取得對應range文字wording，耦合高，暫時維持現狀。
     var compareArray = qmconfig.D.D_compare;
     var target = uiTotalValue;
     
@@ -269,6 +270,8 @@ function calculate_D(qmconfig) {
             resultDatail = resultDatail.substring(0, resultDatail.length - 1);
         }
     }
+
+    console.log('resultTitle='+resultTitle);
     //--------detail--------
     return new DataTypeB(resultTitle, resultDatail);
 }
