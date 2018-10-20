@@ -207,15 +207,17 @@ function calculate_C(qmconfig) {
 //1. -----C----- D-[1-4]
 function calculate_D(qmconfig) {
     console.log('calculate_D()');
-    var resultTitle = uiTotalValue; //總分
+    var resultTitle = uiTotalValue; //
     var resultDatail = ''; //總分建議
     var scoreArray = uiValue; //各項分數
+    
 
-    //--------title--------
-    resultTitle = qmconfig.D.D_1[0].title + ' ' + uiTotalValue + '，';
-    // console.log(resultTitle);
-    //D-1
-    // resultDatail += qmconfig.D.D_1[0].title;
+    //resultTitle 格式 = [總分] + [,] + [，目前沒有嚴重的慢性缺氧病狀，恭喜您！]
+    //[,]用來隔開，讓上層使用
+
+
+    //resultTitle = D-1 + D-2
+    
     //D-2
     //根據分數，取得對應range文字wording
     //耦合高，暫時維持現狀。
@@ -225,7 +227,7 @@ function calculate_D(qmconfig) {
     $.each(compareArray, function(mIndex, compare) {
         // console.log('compare='+compare +' target='+target);
         if (target <= compare) {
-            resultTitle += qmconfig.D.D_2[mIndex].title;
+            resultTitle += ',' + qmconfig.D.D_2[mIndex].title;//[,]隔開array
             return false;
         }
     });
@@ -268,7 +270,6 @@ function calculate_D(qmconfig) {
         }
     }
     //--------detail--------
-
     return new DataTypeB(resultTitle, resultDatail);
 }
 

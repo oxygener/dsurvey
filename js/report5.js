@@ -187,7 +187,9 @@ $(function() {
     }
 
     function updateUI_D(D) {
-        $('#ui_D_1').append(D.title);
+        $('#ui_D_1_4').html(D.title.split(",")[0]);
+        $('#ui_D_1_5').html(D.title.split(",")[1]);
+
         $('#ui_D_2').append(D.detail);
     }
 });
