@@ -4,7 +4,8 @@ var CONFIG_DEFAULT_SELECT_TYPE_B = 0; //2個選項radio預設選項
 var currentPage = 0;//預設第一頁pages
 
 var config; //json格式的config設定檔
-var questions = [];
+var mapping_question = [];//將問卷題目放到array，供qid逆向取得
+var mapping_number = [];//將問卷題號放到array，供qid逆向取得
 
 $(function() {
     initConfig();
@@ -53,13 +54,13 @@ function init() {
     });
 
     //預設勾選第一個radio button
-    $('.radio-type-A').each(function(index, element) {
-        $(this).find('input').eq(CONFIG_DEFAULT_SELECT_TYPE_A).attr('checked', true);
-    });
+    // $('.radio-type-A').each(function(index, element) {
+    //     $(this).find('input').eq(CONFIG_DEFAULT_SELECT_TYPE_A).attr('checked', true);
+    // });
 
-    $('.radio-type-B').each(function(index, element) {
-        $(this).find('input').eq(CONFIG_DEFAULT_SELECT_TYPE_B).attr('checked', true);
-    });
+    // $('.radio-type-B').each(function(index, element) {
+    //     $(this).find('input').eq(CONFIG_DEFAULT_SELECT_TYPE_B).attr('checked', true);
+    // });
 
     //檢查是否有上次檢驗報告紀錄
     var lastRecordUrl = Cookies.get(COOKIE_KEY_LAST_RECORD_URL);
@@ -84,8 +85,11 @@ function init() {
     });
 
     $("#btn_next").click(function() {
+
+
+
         //必填未填
-        if (!checkInputField()) { return false; }
+        if (!validation()) { return false; }
 
         gotoNextAction(++currentPage);
     });
@@ -152,25 +156,34 @@ function init() {
     }
 }
 
-//將問題從config檔塞到questions[]
+//將問題從config檔塞到mapping_question[]
 function initQuestions() {
     $.each(config.inputField, function(cIndex, item_inputField) {
         $.each(item_inputField.question, function(sIndex, item_question) {
-            questions[item_question.qid] = item_question.title;
+            // console.log('qid='+item_question.qid+' title='+item_question.title);
+            mapping_question[item_question.qid] = item_question.title;
+            mapping_number[item_question.qid] = item_question.number;
         });
     });
 
     $.each(config.session, function(cIndex, item_session) {
         $.each(item_session.question, function(sIndex, item_question) {
-            questions[item_question.qid] = item_question.title;
+            // console.log('qid='+item_question.qid+' title='+item_question.title);
+            mapping_question[item_question.qid] = item_question.title;
+            mapping_number[item_question.qid] = item_question.number;
         });
     });
 }
 
-//1. 提供method取得物件questions[]
-function getQuestionsVar(name) {
-    var result = questions[name];
-    return typeof result != 'undefined' ? result : '1';
+//1. 提供method取得物件mapping_question[]
+function getQuestionsMapping(name) {
+    var result = mapping_question[name];
+    return typeof result != 'undefined' ? result : 'error';
+}
+
+function getNumberMapping(name) {
+    var result = mapping_number[name];
+    return typeof result != 'undefined' ? result : 'error';
 }
 
 // 設定ui inputField
@@ -228,21 +241,50 @@ function initInputField() {
 }
 
 //檢查是否有必填未填
-function checkInputField() {
-    console.log('checkInputField()');
-    var isValid = true;
+function validation() {
+    console.log('validation()');
+    var isValidation = true;
 
+    //-----------------------------檢查input radio button
+    $('.radio-box:visible').each(function(index, element) {
+        var input_checked = $(this).find('input:checked');
+        if (input_checked.length>0) {
+            //至少有一個勾選
+        }else{
+            //沒有勾選
+            var unchecked = $(this).find('input').not(":checked");//取得未勾選的input
+            var qid = unchecked.attr('name');//取的qid
+            alert(getAlertText(getNumberMapping(qid) + getQuestionsMapping(qid)));//顯示alert
+            isValidation = false;
+            return false;//跳離each，還是會繼續走method的程式，所以透過isValidation回傳false
+        }
+    });
+    
+    //如果是true，需要再往下檢查。
+    if (!isValidation) {
+        return isValidation;//回傳檢查失敗
+    }
+
+    //-----------------------------
+    
+    
+    //檢查input text
     $('input:visible').not(".optional").each(function() {
         if (!$(this).val()) {
             var qid = $(this).attr('name');
-            alert('問題「' + getQuestionsVar(qid) + '」未填');
-            isValid = false;
-            return false; //跳離each，還是會繼續走method的程式
+            alert(getAlertText(getQuestionsMapping(qid)));
+            isValidation = false;
+            return false; //跳離each，還是會繼續走method的程式，所以透過isValidation回傳false
         }
     });
 
-    return isValid;
+    return isValidation;
 }
+
+function getAlertText(message){
+    return '必填未填 [ ' + message + ' ]';
+}
+
 //在UI上面產生題目
 function initSessionUI() {
     console.log('initSessionUI()');
@@ -267,7 +309,6 @@ function initSessionUI() {
         var hintText = config.page[pageIndex-1].hint;//+'('+(index+1)+')'; 
 
         $.each(session, function(index, data) {
-            // var context = { title: data.title, name: data.qid, hint: hintText};
             var context = {title: data.title, name: data.qid, hint:data.hint, number:data.number, color:page_group_color};
             var type = data.type;
             var html;
