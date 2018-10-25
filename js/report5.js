@@ -99,10 +99,9 @@ $(function() {
         updateUI_B_typeB(B_typeB);
         updateUI_C(C);
         updateUI_A(A);
-        updateUI_D(D);
+        var D_combine_format =  updateUI_D(D);
 
-
-        var gMergeParam = createGMergeParam(A, B_typeA, B_typeB, C, D);
+        var gMergeParam = createGMergeParam(A, B_typeA, B_typeB, C, D_combine_format);
         sendGoogleSheet(gMergeParam);
 
     }
@@ -185,11 +184,19 @@ $(function() {
     }
 
     function updateUI_D(D) {
-        $('#ui_D_1_1').html(D.title.split(",")[0]);
-        $('#ui_D_1_2').html(D.title.split(",")[1]);
-        $('#ui_D_1_3').html(D.title.split(",")[2]);
-
+        //因為前台title的wording css不同，因此拆分成3個物件
+        //resultTitle 格式 = 1;[使用者名稱] + 2.[總分] + 3.[總分評語]
+        $('#ui_D_1_1_username').html(D.title.split(COMMON_SEPARATE)[0]);
+        $('#ui_D_1_2_total_value').html(D.title.split(COMMON_SEPARATE)[1]);
+        $('#ui_D_1_3_total_wording').html(D.title.split(COMMON_SEPARATE)[2]);
         $('#ui_D_2').append(D.detail);
+
+        //將完整title組合
+        var combine_title = '';
+        $.each($("#ui_D_1 div"), function(index, data) {
+            combine_title += $(this).text();
+        });
+        return new DataTypeB(combine_title, D.detail);
     }
 });
 
@@ -210,16 +217,15 @@ function initHttpGet() {
         var key = hash[0];
         var value = hash[1];
 
-        if(key == KEY_USER_NAME) {//取得用戶姓名
+        if(key == KEY_USER_NAME) {//取得用戶姓名，並存在物件
             userName = decodeURIComponent(value);
-            continue;
         }
 
         if(key == KEY_INSERT) {//取得是否需要insert google sheet
             if (value == VALUE_INSERT_TRUE) {
                 isNeedInsert = true;//要insert google sheet，將insert開關打開
             }
-            continue;
+            continue;//此http get值不需要insert，故跳開
         }
 
         //問卷題目

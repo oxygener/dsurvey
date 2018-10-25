@@ -210,6 +210,7 @@ function calculate_D(qmconfig, userName) {
     var resultTitle = '';
     var resultDatail = ''; //總分建議
     var scoreArray = uiValue; //各項分數
+
     
     //resultTitle 格式 = 1;[使用者名稱] + 2.[總分] + 3.[總分評語]
     //組合[使用者名稱] 
@@ -217,7 +218,7 @@ function calculate_D(qmconfig, userName) {
     resultTitle += userName;
     
     //組合[總分] 
-    resultTitle += ',' + uiTotalValue;//[,]隔開array
+    resultTitle += COMMON_SEPARATE + uiTotalValue;//[@]隔開array
 
     //組合[總分評語] 
     //根據分數，取得對應range文字wording，耦合高，暫時維持現狀。
@@ -227,7 +228,7 @@ function calculate_D(qmconfig, userName) {
     $.each(compareArray, function(mIndex, compare) {
         // console.log('compare='+compare +' target='+target);
         if (target <= compare) {
-            resultTitle += ',' + qmconfig.D.D_2[mIndex].title;//[,]隔開array
+            resultTitle += COMMON_SEPARATE + qmconfig.D.D_2[mIndex].title;//[@]隔開array
             return false;
         }
     });
