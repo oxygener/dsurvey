@@ -232,15 +232,6 @@ function initHttpGet() {
         reportLink += (key + '=' + value + '&');
         gSheetParam['entry.' + key] = decodeURIComponent(value); 
 
-        // if (key == KEY_INSERT) {//如果Key=是否需要insert google sheet
-        //     if (value == VALUE_INSERT_TRUE) {
-        //         isNeedInsert = true;//要insert google sheet，將insert開關打開
-        //     }
-        // }else{
-        //     //問卷題目
-        //     reportLink += (key + '=' + value + '&');
-        //     gSheetParam['entry.' + key] = decodeURIComponent(value);    
-        // }
     }
     //如果reportLink最後是「?」，則移除
     if (reportLink.charAt(reportLink.length - 1) == '&') {
@@ -349,12 +340,17 @@ function createGMergeParam(A, B_typeA, B_typeB, C, D) {
 
 function initDownloadButton() {
     $("#downloadReport").on('click', function() {
-        console.log('initDownloadButton()11');
+        console.log('initDownloadButton()');
+
+        var image_quality = 1.0;
+        if (isAndroid()) {
+            image_quality = 0.5;
+        }
 
         html2canvas(document.getElementById("capture")).then(function(canvas) {
             var link = document.createElement('a');
             link.download = '優氧循環檢驗報告.jpg';
-            link.href = canvas.toDataURL("image/jpg",1.0);
+            link.href = canvas.toDataURL("image/jpg",image_quality);
             link.click();
         });
 
@@ -376,7 +372,7 @@ function initDownloadButton() {
     }
 
     //android手機顯示hint
-    if (isDownloadAndroidHintShow()) {
+    if (isAndroid()) {
         console.log('download_android_hint show');
         $("#download_android_hint").show();
     }else{
@@ -386,7 +382,7 @@ function initDownloadButton() {
 }
 
 //android手機顯示hint
-function isDownloadAndroidHintShow(){
+function isAndroid(){
     var deviceAgent = navigator.userAgent.toLowerCase();//裝置agent
     var agentID = deviceAgent.match(/(android)/);
     if (agentID) {
