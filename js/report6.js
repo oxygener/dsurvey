@@ -344,13 +344,13 @@ function initDownloadButton() {
 
         var image_quality = 1.0;
         if (isAndroid()) {
-            image_quality = 0.5;
+            image_quality = 0.2;
         }
 
         html2canvas(document.getElementById("capture")).then(function(canvas) {
             var link = document.createElement('a');
             link.download = '優氧循環檢驗報告.jpg';
-            link.href = canvas.toDataURL("image/jpg",0.5);
+            link.href = canvas.toDataURL("image/jpg",image_quality);
             link.click();
         });
 
