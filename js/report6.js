@@ -1,15 +1,13 @@
 var gFormID = '';
 var gSheetParam = {}; //google sheet所需要的參數
 var config; //json格式的config設定檔
-var isNeedInsert = false;
 var reportLink = '';//insert google sheet的連結，不會重複insert google sheet
 var userName = '';//使用者在問卷填的名字
 
 
 $(function() {
-    // console.log('start() ver=6');
+    console.log('start() ver=6-1');
     // alert('start() ver=7');//todo test
-    isNeedInsert = false;//預設不傳送sheet
     var qmconfig; //json格式的question mapping設定檔
 
     initLoadingAnimation();
@@ -223,13 +221,6 @@ function initHttpGet() {
             userName = decodeURIComponent(value);
         }
 
-        if(key == KEY_INSERT) {//取得是否需要insert google sheet
-            if (value == VALUE_INSERT_TRUE) {
-                isNeedInsert = true;//要insert google sheet，將insert開關打開
-            }
-            continue;//此http get值不需要insert，故跳開
-        }
-
         //問卷題目
         reportLink += (key + '=' + value + '&');
         gSheetParam['entry.' + key] = decodeURIComponent(value); 
@@ -255,7 +246,7 @@ function sendGoogleSheet(gMergeParam) {
 
     //檢查是否有上次檢驗報告紀錄
     var need_insert_google_sheet = Cookies.get(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET);
-    if ((typeof need_insert_google_sheet != 'undefined') && need_insert_google_sheet == 'true') {
+    if ((typeof need_insert_google_sheet != 'undefined') && need_insert_google_sheet == VALUE_INSERT_TRUE) {
         //cookie有值
         console.log('send google sheet (cookie)');
         Cookies.remove(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET);//刪除cookie
@@ -264,13 +255,6 @@ function sendGoogleSheet(gMergeParam) {
         console.log('no send google sheet (cookie)');
         return false;
     }
-
-    // if (!isNeedInsert) {
-    //     console.log('no send google sheet');
-    //     return false;
-    // }else{
-    //     console.log('send google sheet');
-    // }
 
     //額外送出欄位1. USER優氧循環 2.USER建議清單
     var linkQid = config.systemField[0].question[0].qid; //儲存連結欄位

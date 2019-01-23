@@ -146,11 +146,9 @@ function init() {
 
 
 
-        //將參數記錄至cookie，下次使用
-        Cookies.set(COOKIE_KEY_LAST_RECORD_URL, url, { expires: 365 });
-        Cookies.set(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET, "true", { expires: 1 });
-        //增加參數 
-        url += ('&' + KEY_INSERT + '=' + VALUE_INSERT_TRUE);//(需要insert google sheet)
+        
+        Cookies.set(COOKIE_KEY_LAST_RECORD_URL, url, { expires: 365 });//將參數記錄至cookie，下次使用
+        Cookies.set(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET, VALUE_INSERT_TRUE, { expires: 1 });//(需要insert google sheet)
         //導網址
         goNextPage(url);
 

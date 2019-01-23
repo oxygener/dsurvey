@@ -6,12 +6,11 @@ var common_mode = "0";
 
 
 //--------------------不需要調整---------------------
-var KEY_INSERT = 'ins'; //http get 設定參數 (是否需要insert google sheet)
-var VALUE_INSERT_TRUE = '1';
+var COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET = 'NEED_INSERT_GOOGLE_SHEET'; //紀錄需要INSERT
+var VALUE_INSERT_TRUE = '1';										  //需要INSERT
 var COMMON_MODE_NORMAL = "0";
 var COMMON_MODE_EXHIBITION = "1";
 var COMMON_MODE_EXHIBITION_NAME = "體驗者";
 var COMMON_SEPARATE = "@";
 
 
-var COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET = 'NEED_INSERT_GOOGLE_SHEET'; //紀錄需要INSERT
