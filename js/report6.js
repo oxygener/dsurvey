@@ -217,6 +217,8 @@ function initHttpGet() {
         var key = hash[0];
         var value = hash[1];
 
+        value = value.replace(',','');
+
         if(key == KEY_USER_NAME) {//取得用戶姓名，並存在物件
             userName = decodeURIComponent(value);
         }
