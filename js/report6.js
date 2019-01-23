@@ -252,12 +252,25 @@ function getUrlVar(name) {
 //send gooogle sheet request
 function sendGoogleSheet(gMergeParam) {
 
-    if (!isNeedInsert) {
-        console.log('no send google sheet');
+
+    //檢查是否有上次檢驗報告紀錄
+    var need_insert_google_sheet = Cookies.get(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET);
+    if ((typeof need_insert_google_sheet != 'undefined') && need_insert_google_sheet == 'true') {
+        //cookie有值
+        console.log('send google sheet (cookie)');
+        Cookies.remove(COOKIE_KEY_NEED_INSERT_GOOGLE_SHEET);//刪除cookie
+    } else {
+        //cookie沒有值
+        console.log('no send google sheet (cookie)');
         return false;
-    }else{
-        console.log('send google sheet');
     }
+
+    // if (!isNeedInsert) {
+    //     console.log('no send google sheet');
+    //     return false;
+    // }else{
+    //     console.log('send google sheet');
+    // }
 
     //額外送出欄位1. USER優氧循環 2.USER建議清單
     var linkQid = config.systemField[0].question[0].qid; //儲存連結欄位
