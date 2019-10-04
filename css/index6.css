@@ -49,17 +49,17 @@
 ::-webkit-input-placeholder {
     /*input field的高度*/
     height: 60px;
-    border-color: #3b5562;
-    color: #3b5562;
+    border-color: #04405A;
+    color: #04405A;
 }
 
 .contact-title {
-    color: #3b5562;
+    color: #04405A;
 }
 
 /* input field hint 目前因為input class=form-control 會沒作用，原因不明*/
 ::-webkit-input-placeholder {
-    color: #3b5562;
+    color: #04405A;
 }
 
 /*.contact-form form {
