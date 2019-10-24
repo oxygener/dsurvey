@@ -61,7 +61,7 @@
 #card-B-1,
 #card-A-1>.card-body>.card-text:after,
 #card-B-1>.card-body>.card-text:after {
-    background-color: #71cad9;
+    background-color: #d7ede9;
 }
 
 #card-A-2,
@@ -183,7 +183,7 @@
 .card-columns>div>.card {
     margin: 0;
     /*row之間的距離*/
-    border-color: #6fe0f2;
+    border-color: #04405A;
     border-radius: 0;
     /*border-width: 2px;*/
 }
