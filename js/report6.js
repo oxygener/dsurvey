@@ -19,12 +19,12 @@ $(function() {
 
     function initLoadingAnimation(){
         console.log('initLoadingImage()');
-        // $("#report").hide();
+        $("#report").hide();
         $('#loadingimg').imgLoad(function(){
             // 圖片讀取完成
             setTimeout(function() {
                 $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
-                    // $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
+                    $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
                 });
             }, 2700);
         });
