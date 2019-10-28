@@ -15,15 +15,16 @@ $(function() {
     initLoadingAnimation();
     initConfig();
     initDownloadButton();
+    
 
     function initLoadingAnimation(){
         console.log('initLoadingImage()');
-        $("#report").hide();
+        // $("#report").hide();
         $('#loadingimg').imgLoad(function(){
             // 圖片讀取完成
             setTimeout(function() {
                 $( "#loading" ).fadeOut( "1000", function() {//loading頁 fade out
-                    $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
+                    // $( "#report" ).fadeIn( "100", function() {});//report頁 fade in
                 });
             }, 2700);
         });
@@ -328,6 +329,8 @@ function createGMergeParam(A, B_typeA, B_typeB, C, D) {
 
     // console.log('result.toString()='+result.toString());
     return result.toString();
+
+    
 }
 
 //下載檔案到local
@@ -435,3 +438,39 @@ function isDownloadButtonShow(){
         });
     };
 })(jQuery);
+
+
+function mainBanner(){
+    var bannerImg = document.querySelector('.titleBannerImg');
+
+    var content = document.getElementById('ui_D_2').innerHTML;
+    var secContent = document.getElementById('ui_D_1_3_total_wording').innerHTML;
+    
+    var main = document.querySelector('.formContent1');
+
+    if(content.indexOf("熱性")>-1){
+        bannerImg.src = "image/report/report_bannerImg1.jpg";
+        main.innerHTML = "熱性體質";
+    };
+
+    if(content.indexOf("濕性")>-1){
+        bannerImg.src = "image/report/report_bannerImg2.jpg";
+        main.innerHTML = "濕性體質";
+    };
+
+    if(content.indexOf("寒性")>-1){
+        bannerImg.src = "image/report/report_bannerImg5.jpg";
+        main.innerHTML = "寒性體質";
+    };
+
+    if(secContent.indexOf("沒有嚴重的慢性缺氧")>-1){
+        bannerImg.src = "image/report/report_bannerImg4.jpg";
+        main.innerHTML = "優氧體質";
+    };
+
+    if(content.indexOf("請持續留意有無供氧障礙或能量透支情形")>-1){
+        bannerImg.src = "image/report/report_bannerImg3.jpg";
+        main.innerHTML = "無明顯缺氧體質";
+    };
+}
+setTimeout("mainBanner()",3000);

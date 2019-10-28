@@ -139,7 +139,7 @@ function init() {
         updateNextButtonImage(page);
     }
 
-    //修改按鈕image
+    修改按鈕image
     function updateNextButtonImage(page){
         $("#btn_next").attr('src','image/index/p'+page+'/p'+page+'_next.jpg');
     }
