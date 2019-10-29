@@ -448,22 +448,22 @@ function mainBanner(){
     
     var main = document.querySelector('.formContent1');
 
-    if(content.indexOf("熱性")>-1){
+    if(content.indexOf("發炎")>-1){
         bannerImg.src = "image/report/report_bannerImg1.jpg";
         main.innerHTML = "熱性體質";
     };
 
-    if(content.indexOf("濕性")>-1){
+    if(content.indexOf("微循環")>-1){
         bannerImg.src = "image/report/report_bannerImg2.jpg";
         main.innerHTML = "濕性體質";
     };
 
-    if(content.indexOf("寒性")>-1){
+    if(content.indexOf("能量")>-1){
         bannerImg.src = "image/report/report_bannerImg5.jpg";
         main.innerHTML = "寒性體質";
     };
 
-    if(secContent.indexOf("沒有嚴重的慢性缺氧")>-1){
+    if(secContent.indexOf("無顯著缺氧症狀")>-1){
         bannerImg.src = "image/report/report_bannerImg4.jpg";
         main.innerHTML = "優氧體質";
     };
