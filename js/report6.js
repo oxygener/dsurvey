@@ -458,7 +458,7 @@ function mainBanner(){
         main.innerHTML = "濕性體質";
     };
 
-    if(content.indexOf("能量")>-1){
+    if(content.indexOf("器官機能")>-1){
         bannerImg.src = "image/report/report_bannerImg5.jpg";
         main.innerHTML = "寒性體質";
     };
